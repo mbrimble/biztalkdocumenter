@@ -25,9 +25,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BitMaps", "BitMaps", "{3640
 		BitMaps\DefBannerBitmap.bmp = BitMaps\DefBannerBitmap.bmp
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Referenced Assemblies", "Referenced Assemblies", "{EC35F19D-6059-4E50-B40B-16EA8273DC4A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReferencedAssemblies", "ReferencedAssemblies", "{EC35F19D-6059-4E50-B40B-16EA8273DC4A}"
 	ProjectSection(SolutionItems) = preProject
-		..\ReferencedAssemblies\Microsoft.BizTalk.SnapIn.Framework.dll = ..\ReferencedAssemblies\Microsoft.BizTalk.SnapIn.Framework.dll
+		ReferencedAssemblies\Microsoft.BizTalk.SnapIn.Framework.dll = ReferencedAssemblies\Microsoft.BizTalk.SnapIn.Framework.dll
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalk.Utilities.SSO.Core", "..\..\BizTalk.Utilities.SSO.Core\BizTalk.Utilities.SSO.Core.csproj", "{EFDE47E2-AE71-4324-8BC8-77302B62D07D}"
