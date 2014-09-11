@@ -1,0 +1,95 @@
+SET DEADLOCK_PRIORITY LOW 
+
+DECLARE @svcName varchar(256)
+DECLARE @svcAsm varchar(256)
+DECLARE @uidSvcId uniqueIdentifier
+
+SET @svcName = '$Name$'
+SET @svcAsm = '$ParentAssemblyFormattedName$'
+
+-----------------------------------------
+-- DECLARE SOME TEMP STORAGE
+-----------------------------------------
+DECLARE @data table (siid uniqueidentifier, iid uniqueidentifier, startTime DateTime, endTime DateTime, duration int)
+
+-----------------------------------------
+-- INSERT DATA FROM TOP LEVEL ORCH INSTANCES
+-----------------------------------------
+INSERT INTO @data
+SELECT distinct 
+    t.uidServiceInstanceId
+    ,t.vtInstructionId 
+    ,t.dtBeginTimeStamp
+    ,t.dtEndTimeStamp
+
+    ,Duration = 
+	case 
+		when (DATEDIFF(second, t.dtBeginTimeStamp, t.dtEndTimeStamp) > 214748) 
+		then 2147483000
+	        else DATEDIFF(millisecond, t.dtBeginTimeStamp, t.dtEndTimeStamp) 
+	end
+
+FROM 
+	dta_DebugTrace t 
+WITH (READPAST) 
+INNER JOIN dta_serviceInstances si ON 
+	si.uidServiceInstanceId = t.uidServiceInstanceId 
+INNER JOIN dta_services s ON 
+	s.uidServiceId = si.uidServiceId 
+WHERE	
+    t.nServiceSequence = 0 and
+     s.strAssemblyName = @svcAsm
+     AND s.strServiceName = @svcName 
+     AND t.dtBeginTimeStamp between '$dateFrom$' AND '$dateTo$'
+GROUP BY 
+    t.uidServiceInstanceId
+    ,t.vtInstructionId 
+    ,t.dtBeginTimeStamp
+    ,t.dtEndTimeStamp
+    
+    
+-----------------------------------------
+-- INSERT DATA FROM CALLED ORCH INSTANCES
+-----------------------------------------
+SELECT @uidSvcId = uidServiceId FROM dta_Services s
+WHERE s.strServiceName = @svcName AND s.strAssemblyName = @svcAsm
+
+INSERT INTO @data
+SELECT distinct 
+    t.uidServiceInstanceId
+    ,t.vtInstructionId 
+    ,t.dtBeginTimeStamp
+    ,t.dtEndTimeStamp
+
+    ,Duration = 
+	case 
+		when (DATEDIFF(second, t.dtBeginTimeStamp, t.dtEndTimeStamp) > 214748) 
+		then 2147483000
+	        else DATEDIFF(millisecond, t.dtBeginTimeStamp, t.dtEndTimeStamp) 
+	end
+
+FROM 
+	dta_DebugTrace t 
+WITH (READPAST)
+INNER JOIN dta_CallChain cc ON 
+	cc.uidServiceInstanceId = t.uidServiceInstanceId
+WHERE uidCalleesServiceId = @uidSvcId
+AND t.dtBeginTimeStamp between '$dateFrom$' AND '$dateTo$'
+
+
+
+    
+
+-----------------------------------------
+-- GET THE SUMMARY RESULTS WE NEED
+-----------------------------------------
+SELECT 
+	ShapeId = iid,
+	InCount = count(startTime),
+	OutCount = count(startTime),
+	MIN(Duration) as MinDurationInMillis,
+	MAX(Duration) as MaxDurationInMillis,
+	AVG(Duration) as AvgDurationInMillis
+FROM @data
+GROUP BY iid
+
