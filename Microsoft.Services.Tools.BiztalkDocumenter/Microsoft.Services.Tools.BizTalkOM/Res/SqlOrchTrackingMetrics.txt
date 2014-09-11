@@ -1,0 +1,46 @@
+
+SELECT DISTINCT
+	s.uidServiceId,
+	[Service/Name],
+	MinCompletionTimeInMilllis = MIN([ServiceInstance/Duration])
+	,MaxCompletionTimeInMilllis = MAX([ServiceInstance/Duration])
+	,AvgCompletionTimeInMilllis = AVG([ServiceInstance/Duration])
+	,NumCompletedInstances = COUNT([Service/Type])
+
+	,NumTerminatedInstances = 
+		(
+		SELECT COUNT([Service/Type]) 
+		FROM 
+			dbo.dtav_ServiceFacts 
+		WHERE 
+			[Service/VersionGUID] = s.uidServiceId
+			AND [ServiceInstance/State] = 'Terminated'
+			AND [ServiceInstance/StartTime] >= '$dateFrom$'
+			AND [ServiceInstance/EndTime] <= '$dateTo$'
+		)
+
+	,NumStartedInstances = 
+		(
+		SELECT COUNT([Service/Type]) 
+		FROM 
+			dbo.dtav_ServiceFacts 
+		WHERE 
+			[Service/VersionGUID] = s.uidServiceId
+			AND [ServiceInstance/State] = 'Started'
+			AND [ServiceInstance/StartTime] >= '$dateFrom$'
+			AND [ServiceInstance/EndTime] <= '$dateTo$'
+		)
+
+FROM dbo.dtav_ServiceFacts sf
+
+INNER JOIN dta_services s ON 
+	s.uidServiceId = sf.[Service/ServiceGUID] 
+WHERE 
+	[Service/Type] = 'Orchestration'
+    AND s.strAssemblyName = '$ParentAssemblyFormattedName$' 
+	AND s.strServiceName = '$Name$' 
+	AND [ServiceInstance/StartTime] >= '$dateFrom$'
+	AND [ServiceInstance/EndTime] <= '$dateTo$'
+GROUP BY
+	[Service/Name],
+	s.uidServiceId

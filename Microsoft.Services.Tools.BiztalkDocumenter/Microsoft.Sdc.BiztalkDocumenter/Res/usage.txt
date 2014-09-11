@@ -1,0 +1,39 @@
+
+Usage: 
+	Microsoft.Services.Tools.BiztalkDocumenter.exe [options]
+	
+	Options:
+		/s[erver]      The BizTalk 2006 database server name (incl. instance). Default %COMPUTERNAME%.	
+
+		/d[atabase]    The BizTalk 2006 management database name to query. Default BizTalkMgmtDb.
+		
+		/rs            Business rules server name.  Default %COMPUTERNAME%.
+		
+		/rd            Business rules database name.  Default BizTalkRuleEngineDb.
+		
+		/o[utputdir]   The output directory for the report. Default %TEMP%.
+		
+		/t[itle]       The documentation file name.
+		
+		/p[rovider]    The documentation provider to use. chm (default) or word.
+		
+		/a[pplications] The comma separated list of applications to include.
+				
+		/rules         Include business rule documentation. true or false (default).		
+
+	    /show        Show the documentation output when complete.
+		
+		/def[aults]    Run the documenter with all the defaults.
+		
+		/c[ommentfile] The full path to an XML file containing custom comments for BTS artifacts.
+		
+		/h[elp] or /?  This message.
+		
+    Examples:
+        Microsoft.Services.Tools.BiztalkDocumenter.exe /def
+        
+        Microsoft.Services.Tools.BiztalkDocumenter.exe /s:MyServer\INST1 /t:MyReportName /p:word
+        
+        Microsoft.Services.Tools.BiztalkDocumenter.exe /s:MyServer\INST1 /r:schema /p:chm /o:C:\Docs\BTS
+        
+		

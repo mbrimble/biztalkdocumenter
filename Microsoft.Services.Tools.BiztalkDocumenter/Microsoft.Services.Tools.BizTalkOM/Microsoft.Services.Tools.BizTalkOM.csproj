@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{88C5F0A8-851C-4F10-8AB6-67B6B723B837}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>Microsoft.Services.Tools.BizTalkOM</AssemblyName>
+    <AssemblyOriginatorKeyFile>BizTalkTools.snk</AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Microsoft.Services.Tools.BizTalkOM</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SignAssembly>true</SignAssembly>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <PublishUrl>http://localhost/Microsoft.Services.Tools.BizTalkOM/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.BizTalk.CommonUI">
+      <Name>Microsoft.BizTalk.CommonUI</Name>
+      <HintPath>..\ReferencedAssemblies\Microsoft.BizTalk.CommonUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.BizTalk.ExplorerOM">
+      <Name>Microsoft.BizTalk.ExplorerOM</Name>
+      <HintPath>..\..\..\..\Program Files\Microsoft BizTalk Server 2004\Developer Tools\Microsoft.BizTalk.ExplorerOM.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.BizTalk.Interop.SSOClient">
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.BizTalk.Interop.SSOClient\v4.0_7.0.2300.0__31bf3856ad364e35\Microsoft.BizTalk.Interop.SSOClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Biztalk.RuleEngineExtensions, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\Program Files\Microsoft BizTalk Server 2005\Microsoft.Biztalk.RuleEngineExtensions.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Microsoft.BizTalk.XLangView, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferencedAssemblies\Microsoft.BizTalk.XLangView.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferencedAssemblies\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferencedAssemblies\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.RuleEngine, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\Program Files\Microsoft BizTalk Server 2005\Microsoft.RuleEngine.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Microsoft.XLANGs.BaseTypes">
+      <Name>Microsoft.XLANGs.BaseTypes</Name>
+      <HintPath>..\..\..\..\Program Files\Microsoft BizTalk Server 2004\Microsoft.XLANGs.BaseTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Management">
+      <Name>System.Management</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Diagnostics\EntLibLogger.cs" />
+    <Compile Include="Diagnostics\ILogger.cs" />
+    <Compile Include="Diagnostics\LoggerFactory.cs" />
+    <Compile Include="Diagnostics\LoggingCategory.cs" />
+    <Compile Include="Diagnostics\LoggingPriority.cs" />
+    <Compile Include="Diagnostics\NullLogger.cs" />
+    <Compile Include="Domain\Alias.cs" />
+    <Compile Include="Domain\ArtifactEntries.cs" />
+    <Compile Include="Domain\ArtifactEntry.cs" />
+    <Compile Include="Domain\ArtifactEntryComparer.cs" />
+    <Compile Include="Domain\ArtifactKey.cs" />
+    <Compile Include="Domain\ArtifactKeyComparer.cs" />
+    <Compile Include="Domain\BizTalkBaseObjectCollectionEx.cs" />
+    <Compile Include="Domain\Events.cs" />
+    <Compile Include="Domain\OrchestrationRoleLink.cs" />
+    <Compile Include="Domain\MessagePart.cs" />
+    <Compile Include="Domain\OrchestrationMultiPartMessage.cs" />
+    <Compile Include="Domain\Role.cs" />
+    <Compile Include="Domain\Party.cs" />
+    <Compile Include="Diagnostics\SmartSwitch.cs" />
+    <Compile Include="Diagnostics\SmartTrace.cs" />
+    <Compile Include="Diagnostics\TraceManager.cs" />
+    <Compile Include="Diagnostics\TraceTypes.cs" />
+    <Compile Include="Domain\NameIdPairCollection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums\AuthenticationType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums\BindingType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\BizTalkApplication.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\BizTalkAssembly.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\BizTalkBaseObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\BizTalkInstallation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums\Capabilities.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\CollectionSorter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Constants.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\CorrelationSet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\EncryptionCert.cs" />
+    <Compile Include="Domain\Filter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Host.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\HostInstance.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums\LoadOption.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\NameIdPair.cs" />
+    <Compile Include="Domain\OrchestrationError.cs" />
+    <Compile Include="Domain\Orchestration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\OrchestrationMessage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\OrchestrationPort.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\OrchestrationVariable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\OrchViewer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Domain\Pipeline.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums\PipelineType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Protocol.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\ReceiveLocation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\ReceivePort.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\RuleArtifact.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\RulesEngineHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\RuleSetWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Schema.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums\SchemaType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\SendPort.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\SendPortGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\ServiceWindow.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums\TrackingType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Transform.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\TransportInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utils\ManagedCache.cs" />
+    <Compile Include="Utils\SerializerCache.cs" />
+    <EmbeddedResource Include="Res\SqlOrchTrackingMetrics.txt" />
+    <EmbeddedResource Include="Res\SqlOrchTrackingShapeMetrics.txt" />
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Res\SqlOrchErrorInfo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BizTalkTools.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

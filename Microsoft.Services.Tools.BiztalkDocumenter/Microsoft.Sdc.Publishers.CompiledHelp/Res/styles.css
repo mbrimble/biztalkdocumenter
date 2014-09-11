@@ -1,0 +1,142 @@
+BODY  {
+	BACKGROUND-COLOR : white;
+	BORDER-BOTTOM : 0px;
+	BORDER-LEFT : 0px;
+	BORDER-RIGHT : 0px;
+	BORDER-TOP : 0px;
+	MARGIN : 0px;
+	PADDING-BOTTOM : 0px;
+	PADDING-LEFT : 0px;
+	PADDING-RIGHT : 0px;
+	PADDING-TOP : 0px;
+}
+
+.StartOfFile 
+{
+	BACKGROUND-COLOR : #9dbeff;
+	COLOR : #003366;
+	FONT-FAMILY : Verdana, sans-serif;
+	FONT-SIZE : 9px;
+	FONT-WEIGHT : bold;
+	WIDTH : 100%;
+	PADDING-BOTTOM : 5px;
+	PADDING-LEFT : 5px;
+	PADDING-RIGHT : 5px;
+	PADDING-TOP : 5px;
+}
+
+.PageTitle
+{
+	COLOR : #404040;
+	FONT-FAMILY : Verdana, sans-serif;
+	FONT-SIZE : 13px;
+	FONT-WEIGHT : bold;
+	PADDING-LEFT : 5px;
+	PADDING-RIGHT : 5px;
+	PADDING-BOTTOM : 7px;
+	PADDING-TOP : 7px;
+}
+
+.PageTitle3
+{
+	COLOR : #000000;
+	FONT-FAMILY : Verdana, sans-serif;
+	FONT-SIZE : 13px;
+	FONT-WEIGHT : bold;
+	PADDING-LEFT : 0px;
+	PADDING-RIGHT : 5px;
+	PADDING-BOTTOM : 7px;
+	PADDING-TOP : 7px;
+}
+
+.PageTitle2
+{
+	COLOR : #000000;
+	FONT-FAMILY : Verdana, sans-serif;
+	FONT-SIZE : 11px;
+	FONT-WEIGHT : bold;
+	PADDING-LEFT : 5px;
+	PADDING-RIGHT : 5px;
+	PADDING-BOTTOM : 5px;
+	PADDING-TOP : 5px;
+}
+
+.TableTitle
+{
+	COLOR : #000000;
+	FONT-FAMILY : Verdana, sans-serif;
+	FONT-SIZE : 10px;
+	FONT-WEIGHT : bold;
+}
+
+.TableData
+{
+	COLOR : #000000;
+	FONT-FAMILY : Verdana, sans-serif;
+	FONT-SIZE : 10px;
+	FONT-WEIGHT : normal;
+}
+
+.TableDataInactive
+{
+	COLOR : #c0c0c0;
+	FONT-FAMILY : Verdana, sans-serif;
+	FONT-SIZE : 10px;
+	FONT-WEIGHT : normal;
+}
+
+.Copyright
+{
+	COLOR : #c0c0c0;
+	TEXT-ALIGN: right;
+	FONT-FAMILY : Verdana, sans-serif;
+	FONT-SIZE : 9px;
+	FONT-WEIGHT : normal;
+	PADDING-LEFT : 5px;
+	PADDING-RIGHT : 5px;
+}
+
+.ProcedureCode
+{
+	COLOR : #800000;
+	TEXT-ALIGN: left;
+	FONT-FAMILY : Courier New;
+	FONT-SIZE : 11px;
+	FONT-WEIGHT : normal;
+	PADDING-LEFT : 10px;
+	PADDING-RIGHT : 10px;
+}
+
+.MainTitle
+{
+	TEXT-ALIGN: right;
+	FONT-FAMILY : Arial Black, Arial, Verdana, sans-serif;
+	FONT-SIZE : 45;
+	FONT-WEIGHT : bold;
+	PADDING-LEFT : 5px;
+	PADDING-RIGHT : 5px;
+}
+.MainTitle2
+{
+	TEXT-ALIGN: right;
+	FONT-FAMILY : Arial, Verdana, sans-serif;
+	FONT-SIZE : 30;
+	FONT-WEIGHT : bold;
+	PADDING-LEFT : 5px;
+	PADDING-RIGHT : 5px;
+}
+.MainTitle3
+{
+	TEXT-ALIGN: right;
+	FONT-FAMILY : Arial, Verdana, sans-serif;
+	FONT-SIZE : 18;
+	FONT-WEIGHT : bold;
+	PADDING-LEFT : 5px;
+	PADDING-RIGHT : 5px;
+}
+
+.Rule
+{
+	WIDTH : 98%;
+	HEIGHT : 1px;
+}
