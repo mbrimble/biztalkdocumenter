@@ -32,6 +32,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReferencedAssemblies", "Ref
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalk.Utilities.SSO.Core", "..\..\BizTalk.Utilities.SSO.Core\BizTalk.Utilities.SSO.Core.csproj", "{EFDE47E2-AE71-4324-8BC8-77302B62D07D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Archived Biztalk 2006 to BizTalk 2013 Solution", "Archived Biztalk 2006 to BizTalk 2013 Solution", "{625F7734-27CD-4206-B4F2-CC66828AE364}"
+	ProjectSection(SolutionItems) = preProject
+		Archive BizTalk 2010\Biztalk 2010 to 2006 Documenter.zip = Archive BizTalk 2010\Biztalk 2010 to 2006 Documenter.zip
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 9
