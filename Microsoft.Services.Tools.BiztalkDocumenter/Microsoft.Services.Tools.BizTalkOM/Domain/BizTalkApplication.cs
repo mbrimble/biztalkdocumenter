@@ -6,7 +6,7 @@ namespace Microsoft.Services.Tools.BizTalkOM
     using System;
     using System.Xml.Serialization;
     using Microsoft.BizTalk.ExplorerOM;
-
+    using System.Collections.Generic;
     /// <summary>
     /// 
     /// </summary>
@@ -251,20 +251,18 @@ namespace Microsoft.Services.Tools.BizTalkOM
         private void LoadSchemas(BtsCatalogExplorer explorer, Application application)
         {
             TraceManager.SmartTrace.TraceIn();
+            //Collection of namespace typenames MTB 7/12/2014
+            HashSet<string> namespaceTypeName = new HashSet<string>();
+         
             // Schema
             foreach (BizTalk.ExplorerOM.Schema schema in application.Schemas)
             {
                 Schema s = new Schema(schema.FullName);
                 s.Application = this;
                 s.Load(explorer, schema);
-                this.Schemas.Add(s);
-                //if (this.Schemas[schema.FullName] != null)
-                //{
-                //    Schema s = new Schema(schema.FullName);
-                //    s.Application = this;
-                //    s.Load(explorer, schema);
-                //    this.Schemas.Add(s);
-                //}
+                //Check type namespace type name is not a duplicate. BizTalk Explorer has an entry every schema in a namespace type. MTB 7/12/2014
+                if (namespaceTypeName.Add(s.Name))
+                { this.Schemas.Add(s); }
             }
             TraceManager.SmartTrace.TraceOut();
         }
