@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="{07A742F1-FE5C-4B52-9D69-42AC1BC1DD37}" Codepage="1252" Language="1033" Manufacturer="Microsoft Services" Name="BizTalk Documenter" UpgradeCode="{3658D318-1879-43DB-B3C9-95E2A4599A2E}" Version="5.1.4">
+  <Product Id="{07A742F1-FE5C-4B52-9D69-42AC1BC1DD37}" Codepage="1252" Language="1033" Manufacturer="Microsoft Services" Name="BizTalk Documenter 2013" UpgradeCode="{3658D318-1879-43DB-B3C9-95E2A4599A2E}" Version="5.1.5">
     <Package Compressed="yes" InstallerVersion="200" Languages="1033" Manufacturer="Darren Jefford" Platform="x86" />
     <!--<Binary Id="MSVBDPCADLL" SourceFile="FILE NOT EXPORTED, USE THE dark.exe -x OPTION TO EXPORT BINARIES" />
     <Binary Id="VSDNETCFG" SourceFile="FILE NOT EXPORTED, USE THE dark.exe -x OPTION TO EXPORT BINARIES" />-->
@@ -74,7 +74,7 @@
       </Component>
       <Component Id="C__4A1200A165FE39C3CCD5A59EAB0EF9D9" Guid="{1C56F1C4-2352-FC7E-E31B-46333B49BB97}">
         <File Id="_4A1200A165FE39C3CCD5A59EAB0EF9D9" Name="Microsoft.Services.Tools.BiztalkDocumenter.exe" KeyPath="yes" ShortName="MICROS~1.EXE" Assembly=".net" AssemblyManifest="_4A1200A165FE39C3CCD5A59EAB0EF9D9" AssemblyApplication="_4A1200A165FE39C3CCD5A59EAB0EF9D9" DiskId="1" Source="$(var.Microsoft.Services.Tools.BizTalkDocumenter.ProjectDir)bin\x86\Debug\Microsoft.Services.Tools.BiztalkDocumenter.exe" />
-        <Shortcut Id="_632681ACDACA4F0DA2E6FE57E2FF148F" Directory="_47CB6089428A4ECC9B6C5B8CB25061E0" Name="BizTalk Documenter" ShortName="BIZTAL~1" IconIndex="0" Show="normal" WorkingDirectory="TARGETDIR" Advertise="yes" />
+        <Shortcut Id="_632681ACDACA4F0DA2E6FE57E2FF148F" Directory="_47CB6089428A4ECC9B6C5B8CB25061E0" Name="BizTalk Documenter 2013" ShortName="BIZTAL~1" IconIndex="0" Show="normal" WorkingDirectory="TARGETDIR" Advertise="yes" />
       </Component>
       <Component Id="C__ADD25CB097B418157FE37E101A9DA198" Guid="{212BA799-CA69-068E-AF45-B55AB3124BF4}">
         <File Id="_ADD25CB097B418157FE37E101A9DA198" Name="Microsoft.Services.Tools.BiztalkDocumenter.SnapIn.dll" KeyPath="yes" ShortName="MICRO~10.DLL" Assembly=".net" AssemblyManifest="_ADD25CB097B418157FE37E101A9DA198" AssemblyApplication="_ADD25CB097B418157FE37E101A9DA198" DiskId="1" Source="$(var.Microsoft.Services.Tools.BiztalkDocumenter.SnapIn.ProjectDir)bin\x86\Debug\Microsoft.Services.Tools.BiztalkDocumenter.SnapIn.dll" />
