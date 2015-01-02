@@ -26,7 +26,7 @@
                             <td width="10"></td>
                             <td class="PageTitle3" colspan="4">Aliases</td>
                         </tr>
-                        <!--
+                        
                         <tr>
                             <td width="10" colspan="2"></td>
                             <td class="TableTitle">
@@ -39,7 +39,7 @@
                                 <nobr>Qualifier</nobr>
                             </td>
                         </tr>
-                        -->
+                        
 
                         <xsl:for-each select="BizTalkBaseObject/Aliases/Alias">
                             <tr>
@@ -50,14 +50,14 @@
                                 <td>
                                     <xsl:value-of select="Value" />
                                 </td>
-                                <!--
+                                
                                 <td>
                                     <xsl:value-of select="IsAutoCreated" />
                                 </td>
                                 <td>
                                     <xsl:value-of select="Qualifier" />
                                 </td>
-                                -->
+                                
                             </tr>
                         </xsl:for-each>
                     </Table>
