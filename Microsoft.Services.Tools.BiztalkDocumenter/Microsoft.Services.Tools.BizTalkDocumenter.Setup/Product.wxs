@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="{07A742F1-FE5C-4B52-9D69-42AC1BC1DD37}" Codepage="1252" Language="1033" Manufacturer="Microsoft Services" Name="BizTalk Documenter 2013" UpgradeCode="{3658D318-1879-43DB-B3C9-95E2A4599A2E}" Version="5.1.5">
+  <Product Id="{07A742F1-FE5C-4B52-9D69-42AC1BC1DD37}" Codepage="1252" Language="1033" Manufacturer="Microsoft Services" Name="BizTalk Documenter 2013" UpgradeCode="{3658D318-1879-43DB-B3C9-95E2A4599A2E}" Version="5.1.6">
     <Package Compressed="yes" InstallerVersion="200" Languages="1033" Manufacturer="Darren Jefford" Platform="x86" />
     <!--<Binary Id="MSVBDPCADLL" SourceFile="FILE NOT EXPORTED, USE THE dark.exe -x OPTION TO EXPORT BINARIES" />
     <Binary Id="VSDNETCFG" SourceFile="FILE NOT EXPORTED, USE THE dark.exe -x OPTION TO EXPORT BINARIES" />-->

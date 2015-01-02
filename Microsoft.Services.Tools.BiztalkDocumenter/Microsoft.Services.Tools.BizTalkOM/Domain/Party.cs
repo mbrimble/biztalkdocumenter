@@ -106,7 +106,15 @@ namespace Microsoft.Services.Tools.BizTalkOM
                     foreach (BizTalkCore.PartyAlias alias in party.Aliases)
                     {
                         Alias a = new Alias();
-                        a.Name = alias.Name;
+                        // 2015/1/1 MTB Added try catch to handle exceptions bubbled up from  BizTalk object model
+                        try
+                        {
+                            a.Name = alias.Name;
+                        }
+                        catch (InvalidCastException e)
+                        {
+                            a.Name = "Not Valued";
+                        }
 
                         a.IsAutoCreated = alias.IsAutoCreated;
                         a.Qualifier = alias.Qualifier;
