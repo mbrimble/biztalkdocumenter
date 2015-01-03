@@ -37,6 +37,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Archived Biztalk 2006 to Bi
 		Archive BizTalk 2010\Biztalk 2010 to 2006 Documenter.zip = Archive BizTalk 2010\Biztalk 2010 to 2006 Documenter.zip
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Icons", "Icons", "{8E31FE92-20A3-4003-B5BD-7A658A3AD722}"
+	ProjectSection(SolutionItems) = preProject
+		Icons\BTDocumenter.ico = Icons\BTDocumenter.ico
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 9
