@@ -25,10 +25,10 @@
     </CustomTable>
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Component Id="C__EFBE786F1AB3CEAAA90DA0DC57520508" Guid="{00D43CDD-6226-4ED6-BF0E-046459037E46}">
-        <File Id="_EFBE786F1AB3CEAAA90DA0DC57520508" Name="BizTalk.Utilities.SSO.Core.dll" KeyPath="yes" ShortName="BIZTAL~1.DLL" Assembly=".net" AssemblyManifest="_EFBE786F1AB3CEAAA90DA0DC57520508" AssemblyApplication="_EFBE786F1AB3CEAAA90DA0DC57520508" DiskId="1" Source="$(var.Microsoft.Services.Tools.BizTalkDocumenter.ProjectDir)bin\x86\Debug\BizTalk.Utilities.SSO.Core.dll" />
+        <File Id="_EFBE786F1AB3CEAAA90DA0DC57520508" Name="BizTalk.Utilities.SSO.Core.dll" KeyPath="yes" ShortName="BIZTAL~1.DLL" Assembly=".net" AssemblyManifest="_EFBE786F1AB3CEAAA90DA0DC57520508" AssemblyApplication="_EFBE786F1AB3CEAAA90DA0DC57520508" DiskId="1" Source="$(var.Microsoft.Services.Tools.BizTalkDocumenter.ProjectDir)bin\x86\Release\BizTalk.Utilities.SSO.Core.dll" />
       </Component>
       <Component Id="C__8A384CD92854A4F888E04DB475F55010" Guid="{F76B85A2-F746-225F-6416-A5DC7C813868}">
-        <File Id="_8A384CD92854A4F888E04DB475F55010" Name="Microsoft.Services.Tools.BiztalkDocumenter.Core.dll" KeyPath="yes" ShortName="MICROS~2.DLL" Assembly=".net" AssemblyManifest="_8A384CD92854A4F888E04DB475F55010" AssemblyApplication="_8A384CD92854A4F888E04DB475F55010" DiskId="1" Source="$(var.Microsoft.Services.Tools.BizTalkDocumenter.ProjectDir)bin\x86\Debug\Microsoft.Services.Tools.BiztalkDocumenter.Core.dll" />
+        <File Id="_8A384CD92854A4F888E04DB475F55010" Name="Microsoft.Services.Tools.BiztalkDocumenter.Core.dll" KeyPath="yes" ShortName="MICROS~2.DLL" Assembly=".net" AssemblyManifest="_8A384CD92854A4F888E04DB475F55010" AssemblyApplication="_8A384CD92854A4F888E04DB475F55010" DiskId="1" Source="$(var.Microsoft.Services.Tools.BizTalkDocumenter.ProjectDir)bin\x86\Release\Microsoft.Services.Tools.BiztalkDocumenter.Core.dll" />
       </Component>
       <Component Id="C__5607CF9076E6D7ADE36DBC790655BE2E" Guid="{7BFD6F10-453B-83FF-3282-83DB1D3F310A}">
         <File Id="_5607CF9076E6D7ADE36DBC790655BE2E" Name="Microsoft.Practices.Unity.dll" KeyPath="yes" ShortName="MICROS~1.DLL" Assembly=".net" AssemblyManifest="_5607CF9076E6D7ADE36DBC790655BE2E" AssemblyApplication="_5607CF9076E6D7ADE36DBC790655BE2E" DiskId="1" Source="C:\Windows\assembly\GAC_MSIL\Microsoft.Practices.Unity\2.0.414.0__31bf3856ad364e35\Microsoft.Practices.Unity.dll" />
@@ -40,19 +40,19 @@
         <File Id="_95BE6347A69903BCEC30E7734EAD7729" Name="Microsoft.VisualBasic.PowerPacks.Vs.dll" KeyPath="yes" ShortName="MICROS~4.DLL" Assembly=".net" AssemblyManifest="_95BE6347A69903BCEC30E7734EAD7729" AssemblyApplication="_95BE6347A69903BCEC30E7734EAD7729" DiskId="1" Source="C:\Program Files (x86)\Reference Assemblies\Microsoft\VBPowerPacks\v10.0\Microsoft.VisualBasic.PowerPacks.Vs.dll" />
       </Component>
       <Component Id="C__A7D4D04452CE1274BF50BA56F21A642C" Guid="{2E25BFE6-CCEC-63B8-12FB-7E5A3D36AAA1}">
-        <File Id="_A7D4D04452CE1274BF50BA56F21A642C" Name="Microsoft.Services.Tools.BizTalkOM.dll" KeyPath="yes" ShortName="MICROS~5.DLL" Assembly=".net" AssemblyManifest="_A7D4D04452CE1274BF50BA56F21A642C" AssemblyApplication="_A7D4D04452CE1274BF50BA56F21A642C" DiskId="1" Source="$(var.Microsoft.Services.Tools.BizTalkDocumenter.ProjectDir)bin\x86\Debug\Microsoft.Services.Tools.BizTalkOM.dll" />
+        <File Id="_A7D4D04452CE1274BF50BA56F21A642C" Name="Microsoft.Services.Tools.BizTalkOM.dll" KeyPath="yes" ShortName="MICROS~5.DLL" Assembly=".net" AssemblyManifest="_A7D4D04452CE1274BF50BA56F21A642C" AssemblyApplication="_A7D4D04452CE1274BF50BA56F21A642C" DiskId="1" Source="$(var.Microsoft.Services.Tools.BizTalkDocumenter.ProjectDir)bin\x86\Release\Microsoft.Services.Tools.BizTalkOM.dll" />
       </Component>
       <Component Id="C__D367DE7E2495B6B14E3883BFE1E8FFC5" Guid="{B1273C55-6AA4-124E-3FA0-6495D50CC058}">
         <File Id="_D367DE7E2495B6B14E3883BFE1E8FFC5" Name="Microsoft.Practices.EnterpriseLibrary.Common.dll" KeyPath="yes" ShortName="MICROS~6.DLL" Assembly=".net" AssemblyManifest="_D367DE7E2495B6B14E3883BFE1E8FFC5" AssemblyApplication="_D367DE7E2495B6B14E3883BFE1E8FFC5" DiskId="1" Source="C:\Windows\assembly\GAC_MSIL\Microsoft.Practices.EnterpriseLibrary.Common\5.0.414.0__31bf3856ad364e35\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
       </Component>
       <Component Id="C__D56982CC3A1FB57C302A6ED04436FF1E" Guid="{ACBC15C1-10AB-D685-E9F2-FAC8CA5C90D2}">
-        <File Id="_D56982CC3A1FB57C302A6ED04436FF1E" Name="Microsoft.Services.Tools.Publishers.Word.dll" KeyPath="yes" ShortName="MICROS~7.DLL" Assembly=".net" AssemblyManifest="_D56982CC3A1FB57C302A6ED04436FF1E" AssemblyApplication="_D56982CC3A1FB57C302A6ED04436FF1E" DiskId="1" Source="$(var.Microsoft.Services.Tools.BizTalkDocumenter.ProjectDir)bin\x86\Debug\Microsoft.Services.Tools.Publishers.Word.dll" />
+        <File Id="_D56982CC3A1FB57C302A6ED04436FF1E" Name="Microsoft.Services.Tools.Publishers.Word.dll" KeyPath="yes" ShortName="MICROS~7.DLL" Assembly=".net" AssemblyManifest="_D56982CC3A1FB57C302A6ED04436FF1E" AssemblyApplication="_D56982CC3A1FB57C302A6ED04436FF1E" DiskId="1" Source="$(var.Microsoft.Services.Tools.BizTalkDocumenter.ProjectDir)bin\x86\Release\Microsoft.Services.Tools.Publishers.Word.dll" />
       </Component>
       <Component Id="C__ED8FA3826C4C6D8C6F2F210F4D9343A3" Guid="{5B419A37-B697-2E8D-E775-A427463D5E10}">
         <File Id="_ED8FA3826C4C6D8C6F2F210F4D9343A3" Name="Microsoft.Practices.ObjectBuilder2.dll" KeyPath="yes" ShortName="MICROS~8.DLL" Assembly=".net" AssemblyManifest="_ED8FA3826C4C6D8C6F2F210F4D9343A3" AssemblyApplication="_ED8FA3826C4C6D8C6F2F210F4D9343A3" DiskId="1" Source="C:\Windows\assembly\GAC_MSIL\Microsoft.Practices.ObjectBuilder2\2.2.0.0__31bf3856ad364e35\Microsoft.Practices.ObjectBuilder2.dll" />
       </Component>
       <Component Id="C__FAFC3FE673D1BC8851B024F6697319FA" Guid="{C7E8BF68-D792-0856-3804-8C2E67D71296}">
-        <File Id="_FAFC3FE673D1BC8851B024F6697319FA" Name="Microsoft.Services.Tools.Publishers.CompiledHelp.dll" KeyPath="yes" ShortName="MICROS~9.DLL" Assembly=".net" AssemblyManifest="_FAFC3FE673D1BC8851B024F6697319FA" AssemblyApplication="_FAFC3FE673D1BC8851B024F6697319FA" DiskId="1" Source="$(var.Microsoft.Services.Tools.BizTalkDocumenter.ProjectDir)bin\x86\Debug\Microsoft.Services.Tools.Publishers.CompiledHelp.dll" />
+        <File Id="_FAFC3FE673D1BC8851B024F6697319FA" Name="Microsoft.Services.Tools.Publishers.CompiledHelp.dll" KeyPath="yes" ShortName="MICROS~9.DLL" Assembly=".net" AssemblyManifest="_FAFC3FE673D1BC8851B024F6697319FA" AssemblyApplication="_FAFC3FE673D1BC8851B024F6697319FA" DiskId="1" Source="$(var.Microsoft.Services.Tools.BizTalkDocumenter.ProjectDir)bin\x86\Release\Microsoft.Services.Tools.Publishers.CompiledHelp.dll" />
       </Component>
       <Component Id="C__746C69616E6711D38E0D00C04F6837D0" Guid="{07A742F1-FE5C-4B52-9D69-42AC1BC1DD37}" KeyPath="yes">
         <RemoveFolder Id="_832DAB0E853B4CEBB2682C838A4B8090" Directory="_47CB6089428A4ECC9B6C5B8CB25061E0" On="uninstall" />
@@ -73,11 +73,11 @@
         <RegistryValue Id="_718990C517024F34BFE102FEB8768B8B" Root="HKLM" Key="Software\Microsoft\MMC\Snapins\{9A77C670-2FFD-4ab4-8F20-169C08FB8320}\NodeTypes\{44D88BF2-88D1-46e0-93EB-5BD842FDED31}" Value="Application Node" Type="string" KeyPath="yes" />
       </Component>
       <Component Id="C__4A1200A165FE39C3CCD5A59EAB0EF9D9" Guid="{1C56F1C4-2352-FC7E-E31B-46333B49BB97}">
-        <File Id="_4A1200A165FE39C3CCD5A59EAB0EF9D9" Name="Microsoft.Services.Tools.BiztalkDocumenter.exe" KeyPath="yes" ShortName="MICROS~1.EXE" Assembly=".net" AssemblyManifest="_4A1200A165FE39C3CCD5A59EAB0EF9D9" AssemblyApplication="_4A1200A165FE39C3CCD5A59EAB0EF9D9" DiskId="1" Source="$(var.Microsoft.Services.Tools.BizTalkDocumenter.ProjectDir)bin\x86\Debug\Microsoft.Services.Tools.BiztalkDocumenter.exe" />
-        <Shortcut Id="_632681ACDACA4F0DA2E6FE57E2FF148F" Directory="_47CB6089428A4ECC9B6C5B8CB25061E0" Name="BizTalk Documenter 2013" ShortName="BIZTAL~1" IconIndex="0" Show="normal" WorkingDirectory="TARGETDIR" Advertise="yes" />
+        <File Id="_4A1200A165FE39C3CCD5A59EAB0EF9D9" Name="Microsoft.Services.Tools.BiztalkDocumenter.exe" KeyPath="yes" ShortName="MICROS~1.EXE" Assembly=".net" AssemblyManifest="_4A1200A165FE39C3CCD5A59EAB0EF9D9" AssemblyApplication="_4A1200A165FE39C3CCD5A59EAB0EF9D9" DiskId="1" Source="$(var.Microsoft.Services.Tools.BizTalkDocumenter.ProjectDir)bin\x86\Release\Microsoft.Services.Tools.BiztalkDocumenter.exe" />
+        <Shortcut Id="_632681ACDACA4F0DA2E6FE57E2FF148F" Directory="_47CB6089428A4ECC9B6C5B8CB25061E0" Name="BizTalk Documenter 2013" ShortName="BIZTAL~1" IconIndex="0" Show="normal" WorkingDirectory="TARGETDIR" Advertise="yes" Icon="_15606E43E70E60388D5FE5.exe"/>
       </Component>
       <Component Id="C__ADD25CB097B418157FE37E101A9DA198" Guid="{212BA799-CA69-068E-AF45-B55AB3124BF4}">
-        <File Id="_ADD25CB097B418157FE37E101A9DA198" Name="Microsoft.Services.Tools.BiztalkDocumenter.SnapIn.dll" KeyPath="yes" ShortName="MICRO~10.DLL" Assembly=".net" AssemblyManifest="_ADD25CB097B418157FE37E101A9DA198" AssemblyApplication="_ADD25CB097B418157FE37E101A9DA198" DiskId="1" Source="$(var.Microsoft.Services.Tools.BiztalkDocumenter.SnapIn.ProjectDir)bin\x86\Debug\Microsoft.Services.Tools.BiztalkDocumenter.SnapIn.dll" />
+        <File Id="_ADD25CB097B418157FE37E101A9DA198" Name="Microsoft.Services.Tools.BiztalkDocumenter.SnapIn.dll" KeyPath="yes" ShortName="MICRO~10.DLL" Assembly=".net" AssemblyManifest="_ADD25CB097B418157FE37E101A9DA198" AssemblyApplication="_ADD25CB097B418157FE37E101A9DA198" DiskId="1" Source="$(var.Microsoft.Services.Tools.BiztalkDocumenter.SnapIn.ProjectDir)bin\x86\Release\Microsoft.Services.Tools.BiztalkDocumenter.SnapIn.dll" />
         <RegistryValue Id="_1E8FA9BB263148858A71FAAF93D44FDE" Root="HKCR" Key="CLSID\{FE224C45-9E7B-36CD-A741-FE63999C321A}\InprocServer32\3.4.0.0" Name="Class" Value="Microsoft.Services.Tools.BiztalkDocumenter.SnapIn.AppConstants" Type="string" />
         <RegistryValue Id="_1EA53FF7564B4BDDA80B6EFF0C137FB8" Root="HKCR" Key="CLSID\{FE224C45-9E7B-36CD-A741-FE63999C321A}\InprocServer32\3.4.0.0" Name="RuntimeVersion" Value="v2.0.50727" Type="string" />
         <RegistryValue Id="_42908378C5BA46219AA6EC5913CFACCE" Root="HKCR" Key="CLSID\{FE224C45-9E7B-36CD-A741-FE63999C321A}\InprocServer32\3.4.0.0" Name="Assembly" Value="Microsoft.Services.Tools.BiztalkDocumenter.SnapIn, Version=3.4.0.0, Culture=neutral, PublicKeyToken=a6629f48564c20a8" Type="string" />
@@ -131,7 +131,7 @@
         <RegistryValue Id="_9765FD2E5D3C49C09FA09714A56AB80A" Root="HKCR" Key="Microsoft.Services.Tools.BiztalkDocumenter.SnapIn.MyExtensionComponentData" Value="Microsoft.Services.Tools.BiztalkDocumenter.SnapIn.MyExtensionComponentData" Type="string" />
       </Component>
       <Component Id="C__92D5F9E02679228F0FAD149FB0A52F36" Guid="{FD99DDAF-8800-8523-7980-45C3EF96C288}">
-        <File Id="_92D5F9E02679228F0FAD149FB0A52F36" Name="Microsoft.Services.Tools.BiztalkDocumenter.exe.config" KeyPath="yes" ShortName="MICROS~1.CON" DiskId="1" Source="$(var.Microsoft.Services.Tools.BizTalkDocumenter.ProjectDir)bin\x86\Debug\Microsoft.Services.Tools.BiztalkDocumenter.exe.config" />
+        <File Id="_92D5F9E02679228F0FAD149FB0A52F36" Name="Microsoft.Services.Tools.BiztalkDocumenter.exe.config" KeyPath="yes" ShortName="MICROS~1.CON" DiskId="1" Source="$(var.Microsoft.Services.Tools.BizTalkDocumenter.ProjectDir)bin\x86\Release\Microsoft.Services.Tools.BiztalkDocumenter.exe.config" />
       </Component>
       <Directory Id="DesktopFolder" ShortSourceName="USER'S~1" SourceName="User's Desktop" />
       <Directory Id="ProgramMenuFolder" ShortSourceName="USER'S~2" SourceName="User's Programs Menu">
@@ -162,7 +162,7 @@
       <ComponentRef Id="C__92D5F9E02679228F0FAD149FB0A52F36" />
       <ComponentRef Id="C__EFBE786F1AB3CEAAA90DA0DC57520508" Primary="yes"/>
     </Feature>
-    <!--<Icon Id="_15606E43E70E60388D5FE5.exe" SourceFile="FILE NOT EXPORTED, USE THE dark.exe -x OPTION TO EXPORT BINARIES" />-->
+    <Icon Id="_15606E43E70E60388D5FE5.exe" SourceFile="$(var.SolutionDir)\Icons\BTDocumenter.ico" />
     <Media Id="1" Cabinet="_1D5C3E4243E56CA518544088B61CF62E" EmbedCab="yes" />
     <Property Id="VSDFrameworkVersion" Value="2.0.50215" />
     <Property Id="VSDAllowLaterFrameworkVersions" Value="True" />
