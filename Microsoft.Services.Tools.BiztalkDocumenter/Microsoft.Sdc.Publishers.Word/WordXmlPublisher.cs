@@ -201,9 +201,138 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
         /// <param name="ssoApplications"></param>
         /// <param name="bizTalkConfigurationPath"></param>
         public void Publish(BizTalkInstallation bi, PublishType publishType, string resourceFolder, string publishFolder,
-                          string reportTitle, bool publishRules, string[] ssoLocations, string[] ssoApplications, string bizTalkConfigurationPath)
+                          string reportTitle, bool publishRules, string[] ssoLocations, string[] ssoApplications, string bizTalkConfigurationPath
+                            , string[] rulesPolicyFilters = null, string[] rulesVocabularyFilters = null, string[] hostFilters = null, string[] adapterFilters = null) // PCA 2015-01-24 - Filters added
         {
-            throw new NotImplementedException();
+            // throw new NotImplementedException();  // PCA 2015-01-24
+            // PCA 2015-01-24 The following steps were changed to generate documentation based on applications as CHM Documenter. 
+
+            this.bi = bi;
+
+            if (!Directory.Exists(publishFolder))
+            {
+                Directory.CreateDirectory(publishFolder);
+            }
+
+            this.fileName = Path.Combine(publishFolder, string.Format("{0}.xml", reportTitle));
+            //this.fileName = this.fileName.Replace(" ", "");
+
+            if (File.Exists(this.fileName))
+            {
+                File.Delete(this.fileName);
+            }
+
+#if (DEBUG)
+            StreamWriter debugSw = new StreamWriter(Path.Combine(Path.GetTempPath(), "DebugBizTalkInstallation.xml"));
+            string debugData = bi.GetXml();
+            debugSw.Write(debugData);
+            debugSw.Flush();
+            debugSw.Close();
+#endif
+
+            using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate))
+            {
+                WordXmlWriter wr = new WordXmlWriter(fs);
+
+                wr.WriteStartDocument();
+
+                //============================================
+                // Styles
+                //============================================
+                this.WriteStyles(wr);
+
+                wr.WriteStartBody();
+                wr.WriteStartSection();
+
+                //============================================
+                // Footers
+                //============================================
+                string footerText = "Generated on: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();
+                wr.WriteFooterString(footerText, "footer");
+
+                //============================================
+                // Title Page
+                //============================================
+                this.WriteTitlePage(wr);
+
+
+                //============================================
+                // Applications    // PCA 2015-01-24
+                //============================================
+                this.WriteApplications(wr);
+                this.UpdatePercentageComplete(60);
+
+
+                //============================================
+                // BRE    // PCA 2015-01-24
+                //============================================
+                this.WriteRules(wr, publishRules, rulesPolicyFilters, rulesVocabularyFilters); // PCA 2015-01-24
+                this.UpdatePercentageComplete(70);
+
+
+                //============================================
+                // Hosts
+                //============================================
+                this.WriteHosts(wr, hostFilters);
+                this.UpdatePercentageComplete(80);
+
+                ////============================================
+                //// Send Port Groups
+                ////============================================
+                //this.WriteSendPortGroups(wr);
+                //this.UpdatePercentageComplete(30);
+
+                ////============================================
+                //// Send Ports
+                ////============================================
+                //this.WriteSendPorts(wr);
+                //this.UpdatePercentageComplete(40);
+
+                ////============================================
+                //// Receive ports
+                ////============================================
+                //this.WriteReceivePorts(wr);
+                //this.UpdatePercentageComplete(50);
+
+                //============================================
+                // Protocols
+                //============================================
+                this.WriteProtocols(wr, adapterFilters);
+                this.UpdatePercentageComplete(90);
+
+                ////============================================
+                //// Assemblies
+                ////============================================
+                //if (publishType != PublishType.SchemaOnly)
+                //{
+                //    this.WriteAssemblies(wr);
+                //}
+                //this.UpdatePercentageComplete(70);
+
+                ////============================================
+                //// Orchestrations
+                ////============================================
+                //if (publishType != PublishType.SchemaOnly)
+                //{
+                //    this.WriteOrchestrations(wr);
+                //}
+                //this.UpdatePercentageComplete(80);
+
+                ////============================================
+                //// Pipelines
+                ////============================================
+                //this.WritePipelines(wr);
+                //this.UpdatePercentageComplete(90);
+
+                wr.WriteEndSection();
+                wr.WriteEndBody();
+                wr.WriteEndDocument();
+
+                wr.BaseStream.Flush();
+                fs.Close();
+            }
+            this.UpdatePercentageComplete(100);
+
         }
 
 
@@ -282,19 +411,22 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
         private void WriteStyles(WordXmlWriter wr)
         {
             wr.WriteStartStyles();
-            wr.WriteStyle("body", "paragraph", "Arial", 8, false, false, Color.Black, Alignment.Left);
-            wr.WriteStyle("bodyBold", "paragraph", "Arial", 8, false, true, Color.Black, Alignment.Left);
-            wr.WriteStyle("mainTitle", "paragraph", "Arial Black", 35, false, false, Color.Black, Alignment.Left);
-            wr.WriteStyle("mainSubTitle", "paragraph", "Arial Black", 28, false, false, Color.Black, Alignment.Left);
-            wr.WriteStyle("footer", "paragraph", "Arial", 7, false, false, Color.Gray, Alignment.Right);
-            wr.WriteStyle("hyperlink", "character", "Arial", 8, true, false, Color.LightBlue, Alignment.Left);
-            wr.WriteStyle("artifactHeading", "paragraph", "Arial", 11, false, true, Color.Black, Color.White, Alignment.Left, 2);
-            wr.WriteStyle("configSectionHeading", "paragraph", "Arial", 18, false, true, Color.White, Color.LightSteelBlue, Alignment.Left, 1);
-            wr.WriteStyle("tab1", "table", "Arial", 8);
-            wr.WriteStyle("artifactSubHeading", "paragraph", "Arial", 9, true, true, Color.DarkSlateGray, Alignment.Left);
+            wr.WriteStyle("body", "paragraph", "Calibri", 8, false, false, Color.Black, Alignment.Left);
+            wr.WriteStyle("bodyBold", "paragraph", "Calibri", 8, false, true, Color.Black, Alignment.Left);
+            wr.WriteStyle("mainTitle", "paragraph", "Calibri", 35, false, false, Color.Black, Alignment.Left);
+            wr.WriteStyle("mainSubTitle", "paragraph", "Calibri", 28, false, false, Color.Black, Alignment.Left);
+            wr.WriteStyle("footer", "paragraph", "Calibri", 7, false, false, Color.Gray, Alignment.Right);
+            wr.WriteStyle("hyperlink", "character", "Calibri", 8, true, false, Color.LightBlue, Alignment.Left);
+            wr.WriteStyle("configSectionHeading", "paragraph", "Calibri", 16, false, true, Color.Black, Color.White, Alignment.Left, 1);
+            wr.WriteStyle("artifactHeading", "paragraph", "Calibri", 12, false, true, Color.Black, Color.White, Alignment.Left, 2);
+            wr.WriteStyle("groupHeading", "paragraph", "Calibri", 11, false, true, Color.Black, Color.White, Alignment.Left, 3); // PCA 2015-01-24
+            //wr.WriteStyle("subGroupHeading", "paragraph", "Calibri", 10, false, true, Color.Black, Color.White, Alignment.Left, 4); // PCA 2015-01-24
+            wr.WriteStyle("innerArtifactHeading", "paragraph", "Calibri", 9, false, true, Color.Black, Color.White, Alignment.Left, 4); // PCA 2015-01-24
+            wr.WriteStyle("tab1", "table", "Calibri", 8);
+            wr.WriteStyle("artifactSubHeading", "paragraph", "Calibri", 8, true, false, Color.Black, Alignment.Left);
 
-            wr.WriteStyle("test", "paragraph", "Arial", 10, true, true, Color.Teal, Alignment.Left);
-            wr.WriteStyle("test3", "paragraph", "Arial", 10, true, true, Color.Tomato, Alignment.Left);
+            wr.WriteStyle("test", "paragraph", "Calibri", 10, true, true, Color.Teal, Alignment.Left);
+            wr.WriteStyle("test3", "paragraph", "Calibri", 10, true, true, Color.Tomato, Alignment.Left);
             wr.WriteEndStyles();
         }
 
@@ -306,84 +438,132 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
         /// 
         /// </summary>
         /// <param name="wr"></param>
-        private void WriteHosts(WordXmlWriter wr)
+        private void WriteHosts(WordXmlWriter wr
+                                , string[] hostFilters = null) // PCA 2015-01-24
+
         {
+
+            hostFilters = hostFilters ?? new string[0] { };
+
             if (this.bi.Hosts.Count > 0)
             {
-                int counter = 0;
                 wr.WritePageBreak();
                 wr.WriteBodyText("Host Configuration", "configSectionHeading");
                 wr.WriteNewLine();
 
+
+                int counter = 0;
+
                 foreach (Host host in bi.Hosts)
                 {
-                    counter++;
-                    wr.WriteStartSubSection();
-                    wr.WriteBodyTextWithPreceedingImage(string.Format("  {0}. {1}", counter, host.Name), "artifactHeading", false, picHost, 14, 14);
-                    wr.WriteNewLine();
-
-                    wr.WriteBodyText("Group Name:  " + host.GroupName, "body");
-                    wr.WriteBodyText("Host Tracking Enabled:  " + host.HostTrackingEnabled.ToString(), "body");
-                    wr.WriteBodyText("Authentication Trusted:  " + host.AuthTrusted.ToString(), "body");
-                    wr.WriteBodyText("Default Host:  " + host.DefaultHost.ToString(), "body");
-
-                    string hostType = host.Inprocess ? "In-Process" : "Isolated";
-                    wr.WriteBodyText("Host Type:  " + hostType, "body");
-
-                    //============================================
-                    // What orchestrations are running in this host
-                    //============================================
-                    wr.WriteNewLine();
-                    wr.WriteBodyText("Orchestrations running in this host", "artifactSubHeading");
-                    wr.WriteNewLine();
-
-                    int orchCounter = 0;
-                    foreach (BizTalkAssembly bta in this.bi.Assemblies)
+                    if (hostFilters.GetLength(0) > 0) // PCA 2015-01-24
                     {
-                        foreach (Orchestration orch in bi.Orchestrations)
+                        foreach (string filter in hostFilters) // PCA 2015-01-24
                         {
-                            if (string.Compare(orch.Host.Name, host.Name, true) == 0)
+                            if (host.Name.StartsWith(filter)) // PCA 2015-01-24
                             {
-                                orchCounter++;
-                                wr.WriteBodyText(orch.Name, "body");
-                                break;
+                                counter++;
+                                WriteHost(wr, host, counter);
                             }
                         }
                     }
-
-                    if (orchCounter == 0)
+                    else
                     {
-                        wr.WriteBodyText("There are no orchestrations running in this host", "body");
+                        counter++;
+                        WriteHost(wr, host, counter);
                     }
-
-                    //Receive locations running in this host
-
-                    wr.WriteNewLine();
-                    wr.WriteBodyText("Receive locations running in this host", "artifactSubHeading");
-                    wr.WriteNewLine();
-
-                    int locCounter = 0;
-                    foreach (ReceivePort rp in this.bi.ReceivePorts)
-                    {
-                        foreach (ReceiveLocation rl in rp.ReceiveLocations)
-                        {
-                            if (string.Compare(rl.ReceiveHandler.Name, host.Name, true) == 0)
-                            {
-                                locCounter++;
-                                wr.WriteBodyText(rl.Name, "body");
-                            }
-                        }
-                    }
-
-                    if (locCounter == 0)
-                    {
-                        wr.WriteBodyText("There are no receive locations running in this host", "body");
-                    }
-
-                    wr.WriteNewLine();
-                    wr.WriteEndSubSection();
                 }
             }
+        }
+
+        private void WriteHost(WordXmlWriter wr, Host host, int counter) // PCA 2015-01-24
+        {
+            wr.WriteStartSubSection();
+            wr.WriteBodyTextWithPreceedingImage(string.Format("  {0}. {1}", counter, host.Name), "artifactHeading", false, picHost, 14, 14);
+            wr.WriteNewLine();
+
+            wr.WriteBodyText("Group Name:  " + host.GroupName, "body");
+            wr.WriteBodyText("Host Tracking Enabled:  " + host.HostTrackingEnabled.ToString(), "body");
+            wr.WriteBodyText("Authentication Trusted:  " + host.AuthTrusted.ToString(), "body");
+            wr.WriteBodyText("Default Host:  " + host.DefaultHost.ToString(), "body");
+
+            string hostType = host.Inprocess ? "In-Process" : "Isolated";
+            wr.WriteBodyText("Host Type:  " + hostType, "body");
+
+            //============================================
+            // What orchestrations are running in this host
+            //============================================
+            wr.WriteNewLine();
+            wr.WriteBodyText("Orchestrations running in this host", "artifactSubHeading");
+            //wr.WriteNewLine();
+
+            int orchCounter = 0;
+            foreach (BizTalkAssembly bta in this.bi.Assemblies)
+            {
+                foreach (Orchestration orch in bi.Orchestrations)
+                {
+                    if (orch.Host != null)  //PCA 2015-01-24
+                    {
+                        if (string.Compare(orch.Host.Name, host.Name, true) == 0)
+                        {
+                            orchCounter++;
+                            wr.WriteBodyText(orch.Name, "body");
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (orchCounter == 0)
+            {
+                wr.WriteBodyText("There are no orchestrations running in this host", "body");
+            }
+
+            //Receive locations running in this host
+
+            wr.WriteNewLine();
+            wr.WriteBodyText("Receive locations running in this host", "artifactSubHeading");
+            //wr.WriteNewLine();
+
+            int locCounter = 0;
+            foreach (ReceivePort rp in this.bi.ReceivePorts)
+            {
+                foreach (ReceiveLocation rl in rp.ReceiveLocations)
+                {
+                    if (string.Compare(rl.ReceiveHandler.Name, host.Name, true) == 0)
+                    {
+                        locCounter++;
+                        wr.WriteBodyText(rl.Name, "body");
+                    }
+                }
+            }
+
+            if (locCounter == 0)
+            {
+                wr.WriteBodyText("There are no receive locations running in this host", "body");
+            }
+
+            //Send Ports running in this host - PCA 2015-01-24
+
+            wr.WriteNewLine();
+            wr.WriteBodyText("Send Ports running in this host", "artifactSubHeading");
+            //wr.WriteNewLine();
+
+            int spCounter = 0;
+
+            foreach (NameIdPair sp in host.HostedSendPorts)
+            {
+                spCounter++;
+                wr.WriteBodyText(sp.Name, "body");
+            }
+
+            if (spCounter == 0)
+            {
+                wr.WriteBodyText("There are no send ports running in this host", "body");
+            }
+
+            wr.WriteNewLine();
+            wr.WriteEndSubSection();
         }
 
         #endregion
@@ -422,7 +602,7 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
                 {
                     wr.WriteNewLine();
                     wr.WriteBodyText("Orchestrations contained in this assembly", "artifactSubHeading");
-                    wr.WriteNewLine();
+                    //wr.WriteNewLine();
 
                     foreach (NameIdPair orchestration in assembly.Orchestrations)
                     {
@@ -437,7 +617,7 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
                 {
                     wr.WriteNewLine();
                     wr.WriteBodyText("Maps contained in this assembly", "artifactSubHeading");
-                    wr.WriteNewLine();
+                    //wr.WriteNewLine();
 
                     foreach (NameIdPair map in assembly.Maps)
                     {
@@ -452,7 +632,7 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
                 {
                     wr.WriteNewLine();
                     wr.WriteBodyText("Schema contained in this assembly", "artifactSubHeading");
-                    wr.WriteNewLine();
+                    //wr.WriteNewLine();
 
                     foreach (NameIdPair schema in assembly.Schemas)
                     {
@@ -467,6 +647,126 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
         }
 
         #endregion
+
+        #region WriteApplicationAssemblies
+
+        private void WriteApplicationAssemblies(WordXmlWriter wr, BizTalkApplication app)
+        {
+            wr.WriteStartSubSection();
+            wr.WriteNewLine();
+            wr.WriteBodyText("Assemblies", "groupHeading");
+            wr.WriteNewLine();
+            int counter = 0;
+
+            foreach (BizTalkAssembly assembly in app.Assemblies)
+            {
+                string name = assembly.DisplayName.Split(new char[] { ',' })[0];
+                counter++;
+
+                wr.WriteStartSubSection();
+                wr.WriteBodyTextWithPreceedingImage(string.Format("  {0}. {1}", counter, name), "innerArtifactHeading", false, picAssembly, 14, 14);
+                wr.WriteNewLine();
+
+                wr.WriteBodyText("Name:  " + name, "body");
+                wr.WriteBodyText("Version:  " + assembly.Version, "body");
+                wr.WriteBodyText("Culture:  " + assembly.Culture, "body");
+                wr.WriteBodyText("Public Key Token:  " + assembly.PublicKeyToken, "body");
+
+                // To-do Referenced Assemblies
+
+                wr.WriteNewLine();
+                wr.WriteEndSubSection();
+            }
+            wr.WriteNewLine();
+            wr.WriteEndSubSection();
+        }
+
+        #endregion 
+
+        #region WriteApplicationSchemas
+
+        private void WriteApplicationSchemas(WordXmlWriter wr, BizTalkApplication app)
+        {
+            wr.WriteStartSubSection();
+            wr.WriteNewLine();
+            wr.WriteBodyText("Schemas", "groupHeading");
+            wr.WriteNewLine();
+            int counter = 0;
+
+            foreach (Schema schema in app.Schemas)
+            {
+                string name = schema.Name;
+                string description;
+                string targetNamespace;
+
+
+                description = schema.CustomDescription ?? "";
+
+                targetNamespace = schema.TargetNamespace ?? "";
+
+                counter++;
+
+                wr.WriteStartSubSection();
+                wr.WriteBodyTextWithPreceedingImage(string.Format("  {0}. {1}", counter, name), "innerArtifactHeading", false, picSchema, 14, 14);
+                wr.WriteNewLine();
+
+                wr.WriteBodyText("Schema Type:  " + schema.SchemaType.ToString(), "body");
+                wr.WriteBodyText("Parent Assembly:  " + schema.ParentAssembly.Name, "body");
+                wr.WriteBodyText("Target Namespace:  " + targetNamespace, "body");
+                wr.WriteBodyText("Root Node:  " + schema.RootName.ToString(), "body");
+                wr.WriteBodyText("Description:  " + description, "body");
+
+                // To-do Referenced Assemblies
+
+                wr.WriteNewLine();
+                wr.WriteEndSubSection();
+            }
+            wr.WriteNewLine();
+            wr.WriteEndSubSection();
+        }
+
+        #endregion 
+
+        #region WriteApplicationMaps
+
+        private void WriteApplicationMaps(WordXmlWriter wr, BizTalkApplication app)
+        {
+            wr.WriteStartSubSection();
+            wr.WriteNewLine();
+            wr.WriteBodyText("Maps", "groupHeading");
+            wr.WriteNewLine();
+            int counter = 0;
+
+            foreach (Transform map in app.Maps)
+            {
+                string name = map.Name;
+                string description;
+
+                if (map.CustomDescription == null)
+                    description = "";
+                else
+                    description = map.CustomDescription.ToString();
+
+                counter++;
+
+                wr.WriteStartSubSection();
+                wr.WriteBodyTextWithPreceedingImage(string.Format("  {0}. {1}", counter, name), "innerArtifactHeading", false, picSchema, 14, 14);
+                wr.WriteNewLine();
+
+                wr.WriteBodyText("Source Schema:  " + map.SourceSchema.Name, "body");
+                wr.WriteBodyText("Target Schema:  " + map.TargetSchema.Name, "body");
+                wr.WriteBodyText("Parent Assembly:  " + map.ParentAssembly.Name, "body");
+                wr.WriteBodyText("Description:  " + description, "body");
+
+                wr.WriteNewLine();
+                wr.WriteEndSubSection();
+            }
+            wr.WriteNewLine();
+            wr.WriteEndSubSection();
+        }
+
+        #endregion 
+
 
         #region WriteSendPorts
 
@@ -491,9 +791,9 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
 
                     string trackingType = (int)port.TrackingType == 0 ? "Not specified" : port.TrackingType.ToString();
 
-                    wr.WriteBodyText("Priority:  " + port.Priority.ToString(), "body");
+                    wr.WriteBodyText("Priority:  " + port.Priority, "body");
                     wr.WriteBodyText("Tracking Type:  " + trackingType, "body");
-                    wr.WriteBodyText("Send Pipeline:  " + port.SendPipeline, "body");
+                    // wr.WriteBodyText("Send Pipeline:  " + port.SendPipeline.Name , "body"); PCA 2015-01-24 - Not Implemented
                     wr.WriteBodyText("Dynamic:  " + port.Dynamic.ToString(), "body");
                     wr.WriteBodyText("Two-Way:  " + port.TwoWay.ToString(), "body");
 
@@ -508,7 +808,7 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
                     //============================================
                     wr.WriteNewLine();
                     wr.WriteBodyText("Orchestrations bound to this send port", "artifactSubHeading");
-                    wr.WriteNewLine();
+                    //wr.WriteNewLine();
 
                     int orchCounter = 0;
                     foreach (NameIdPair boundOrch in port.BoundOrchestrations)
@@ -534,10 +834,83 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
 
         #endregion
 
+        #region WriteApplicationSendPorts
+
+        private void WriteApplicationSendPorts(WordXmlWriter wr, BizTalkApplication app)
+        {
+            if (app.SendPorts.Count > 0)
+            {
+                int counter = 0;
+                wr.WriteStartSubSection();
+                wr.WriteNewLine();
+                wr.WriteBodyText("Send Ports", "groupHeading");
+                wr.WriteNewLine();
+
+                foreach (SendPort port in app.SendPorts)
+                {
+                    counter++;
+                    wr.WriteStartSubSection();
+
+                    string picData = port.TwoWay ? picSendPort2 : picSendPort1;
+
+                    wr.WriteBodyTextWithPreceedingImage(string.Format("  {0}. {1}", counter, port.Name), "innerArtifactHeading", false, picData, 14, 14);
+                    wr.WriteNewLine();
+
+                    string trackingType = (int)port.TrackingType == 0 ? "Not specified" : port.TrackingType.ToString();
+
+                    wr.WriteBodyText("Priority:  " + port.Priority.ToString(), "body");
+                    wr.WriteBodyText("Tracking Type:  " + trackingType, "body");
+                    // wr.WriteBodyText("Send Pipeline:  " + port.SendPipeline, "body");
+                    wr.WriteBodyText("Dynamic:  " + port.Dynamic.ToString(), "body");
+                    wr.WriteBodyText("Two-Way:  " + port.TwoWay.ToString(), "body");
+
+                    // Primary Transport
+                    this.WriteTransportInfo(wr, port.PrimaryTransport, "Primary Transport");
+
+                    // Secondary Transport
+                    this.WriteTransportInfo(wr, port.SecondaryTransport, "Secondary Transport");
+
+                    //============================================
+                    // Orchestrations bound to this send port
+                    //============================================
+                    wr.WriteNewLine();
+                    wr.WriteBodyText("Orchestrations bound to this send port", "artifactSubHeading");
+                    //wr.WriteNewLine();
+
+                    int orchCounter = 0;
+                    foreach (NameIdPair boundOrch in port.BoundOrchestrations)
+                    {
+                        orchCounter++;
+                        wr.WriteBodyText(boundOrch.Name, "body");
+                    }
+
+
+                    if (orchCounter == 0)
+                    {
+                        wr.WriteBodyText("There are no orchestrations bound to this send port", "body");
+                    }
+
+                    wr.WriteNewLine();
+                    wr.WriteNewLine();
+
+                    wr.WriteEndSubSection();
+                }
+                wr.WriteNewLine();
+                wr.WriteEndSubSection();
+            }
+            return;
+        }
+
+        #endregion
+
         #region WriteProtocols
 
-        private void WriteProtocols(WordXmlWriter wr)
+        private void WriteProtocols(WordXmlWriter wr
+                                , string[] adapterFilters = null) // PCA 2015-01-24)
         {
+
+            adapterFilters = adapterFilters ?? new string[0] { };
+
             if (this.bi.ProtocolTypes.Count > 0)
             {
                 wr.WritePageBreak();
@@ -546,96 +919,116 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
 
                 foreach (Protocol protocol in this.bi.ProtocolTypes)
                 {
-                    wr.WriteStartSubSection();
-
-                    wr.WriteBodyTextWithPreceedingImage("  " + protocol.Name, "artifactHeading", false, picProtocol, 16, 16);
-
-                    wr.WriteNewLine();
-
-                    wr.WriteBodyText("Delete protected: " + protocol.DeleteProtected.ToString(), "body");
-                    wr.WriteBodyText("Uses adapter framework UI for receive handler configuration: " + protocol.InitInboundProtocolContext.ToString(), "body");
-                    wr.WriteBodyText("Uses adapter framework UI for send handler configuration: " + protocol.InitOutboundProtocolContext.ToString(), "body");
-                    wr.WriteBodyText("Uses adapter framework UI for receive location configuration: " + protocol.InitReceiveLocationContext.ToString(), "body");
-                    wr.WriteBodyText("Uses adapter framework UI for send port configuration: " + protocol.InitTransmitLocationContext.ToString(), "body");
-                    wr.WriteBodyText("Starts when the service starts: " + protocol.InitTransmitterOnServiceStart.ToString(), "body");
-                    wr.WriteBodyText("Receive handler of adapter is hosted in-process: " + protocol.ReceiveIsCreatable.ToString(), "body");
-                    wr.WriteBodyText("Requires a single instance per server: " + protocol.RequireSingleInstance.ToString(), "body");
-                    wr.WriteBodyText("Supports static handlers: " + protocol.StaticHandlers.ToString(), "body");
-                    wr.WriteBodyText("Supports ordered delivery: " + protocol.SupportsOrderedDelivery.ToString(), "body");
-                    wr.WriteBodyText("Supports receive operations: " + protocol.SupportsReceive.ToString(), "body");
-                    wr.WriteBodyText("Supports request-response operations: " + protocol.SupportsRequestResponse.ToString(), "body");
-                    wr.WriteBodyText("Supports send operations: " + protocol.SupportsSend.ToString(), "body");
-                    wr.WriteBodyText("Supports the SOAP protocol: " + protocol.SupportsSoap.ToString(), "body");
-                    wr.WriteBodyText("Supports solicit-response operations: " + protocol.SupportsSolicitResponse.ToString(), "body");
-
-                    //============================================
-                    // What send ports are using this protocol
-                    //============================================
-                    wr.WriteNewLine();
-                    wr.WriteBodyText("Send ports using this protocol", "artifactSubHeading");
-                    wr.WriteNewLine();
-
-                    int portCounter = 0;
-                    foreach (SendPort sp in this.bi.SendPorts)
+                    if (adapterFilters.GetLength(0) > 0) // PCA 2015-01-24
                     {
-                        bool added = false;
-                        if (sp.PrimaryTransport != null)
+                        foreach (string filter in adapterFilters) // PCA 2015-01-24
                         {
-                            if (string.Compare(sp.PrimaryTransport.Type, protocol.Name, true) == 0)
+                            if (protocol.Name.StartsWith(filter)) // PCA 2015-01-24
                             {
-                                added = true;
-                                portCounter++;
-                                wr.WriteBodyText(sp.Name, "body");
-                            }
-
-                            if (!added && sp.SecondaryTransport != null)
-                            {
-                                if (string.Compare(sp.SecondaryTransport.Type, protocol.Name, true) == 0)
-                                {
-                                    added = true;
-                                    portCounter++;
-                                    wr.WriteBodyText(sp.Name, "body");
-                                }
+                                WriteProtocol(wr, protocol);
                             }
                         }
                     }
-
-                    if (portCounter == 0)
+                    else
                     {
-                        wr.WriteBodyText("There are no send ports using this protocol", "body");
+                        WriteProtocol(wr, protocol);
                     }
-
-                    //============================================
-                    // What receive ports are using this protocol
-                    //============================================
-                    wr.WriteNewLine();
-                    wr.WriteBodyText("Receive ports using this protocol", "artifactSubHeading");
-                    wr.WriteNewLine();
-
-                    portCounter = 0;
-                    foreach (ReceivePort rp in this.bi.ReceivePorts)
-                    {
-                        foreach (ReceiveLocation rl in rp.ReceiveLocations)
-                        {
-                            if (string.Compare(rl.TransportProtocol, protocol.Name, true) == 0)
-                            {
-                                portCounter++;
-                                wr.WriteBodyText(rp.Name, "body");
-                            }
-                        }
-                    }
-
-                    if (portCounter == 0)
-                    {
-                        wr.WriteBodyText("There are no receive ports using this protocol", "body");
-                    }
-
-                    wr.WriteNewLine();
-                    wr.WriteNewLine();
-                    wr.WriteEndSubSection();
                 }
             }
             return;
+        }
+
+        // PCA 2015-01-24
+        private void WriteProtocol(WordXmlWriter wr, Protocol protocol)
+        {
+
+            wr.WriteStartSubSection();
+
+            wr.WriteBodyTextWithPreceedingImage("  " + protocol.Name, "artifactHeading", false, picProtocol, 16, 16);
+
+            wr.WriteNewLine();
+
+            wr.WriteBodyText("Delete protected: " + protocol.DeleteProtected.ToString(), "body");
+            wr.WriteBodyText("Uses adapter framework UI for receive handler configuration: " + protocol.InitInboundProtocolContext.ToString(), "body");
+            wr.WriteBodyText("Uses adapter framework UI for send handler configuration: " + protocol.InitOutboundProtocolContext.ToString(), "body");
+            wr.WriteBodyText("Uses adapter framework UI for receive location configuration: " + protocol.InitReceiveLocationContext.ToString(), "body");
+            wr.WriteBodyText("Uses adapter framework UI for send port configuration: " + protocol.InitTransmitLocationContext.ToString(), "body");
+            wr.WriteBodyText("Starts when the service starts: " + protocol.InitTransmitterOnServiceStart.ToString(), "body");
+            wr.WriteBodyText("Receive handler of adapter is hosted in-process: " + protocol.ReceiveIsCreatable.ToString(), "body");
+            wr.WriteBodyText("Requires a single instance per server: " + protocol.RequireSingleInstance.ToString(), "body");
+            wr.WriteBodyText("Supports static handlers: " + protocol.StaticHandlers.ToString(), "body");
+            wr.WriteBodyText("Supports ordered delivery: " + protocol.SupportsOrderedDelivery.ToString(), "body");
+            wr.WriteBodyText("Supports receive operations: " + protocol.SupportsReceive.ToString(), "body");
+            wr.WriteBodyText("Supports request-response operations: " + protocol.SupportsRequestResponse.ToString(), "body");
+            wr.WriteBodyText("Supports send operations: " + protocol.SupportsSend.ToString(), "body");
+            wr.WriteBodyText("Supports the SOAP protocol: " + protocol.SupportsSoap.ToString(), "body");
+            wr.WriteBodyText("Supports solicit-response operations: " + protocol.SupportsSolicitResponse.ToString(), "body");
+
+            //============================================
+            // What send ports are using this protocol
+            //============================================
+            wr.WriteNewLine();
+            wr.WriteBodyText("Send ports using this protocol", "artifactSubHeading");
+            //wr.WriteNewLine();
+
+            int portCounter = 0;
+            foreach (SendPort sp in this.bi.SendPorts)
+            {
+                bool added = false;
+                if (sp.PrimaryTransport != null)
+                {
+                    if (string.Compare(sp.PrimaryTransport.Type, protocol.Name, true) == 0)
+                    {
+                        added = true;
+                        portCounter++;
+                        wr.WriteBodyText(sp.Name, "body");
+                    }
+
+                    if (!added && sp.SecondaryTransport != null)
+                    {
+                        if (string.Compare(sp.SecondaryTransport.Type, protocol.Name, true) == 0)
+                        {
+                            added = true;
+                            portCounter++;
+                            wr.WriteBodyText(sp.Name, "body");
+                        }
+                    }
+                }
+            }
+
+            if (portCounter == 0)
+            {
+                wr.WriteBodyText("There are no send ports using this protocol", "body");
+            }
+
+            //============================================
+            // What receive ports are using this protocol
+            //============================================
+            wr.WriteNewLine();
+            wr.WriteBodyText("Receive ports using this protocol", "artifactSubHeading");
+            //wr.WriteNewLine();
+
+            portCounter = 0;
+            foreach (ReceivePort rp in this.bi.ReceivePorts)
+            {
+                foreach (ReceiveLocation rl in rp.ReceiveLocations)
+                {
+                    if (string.Compare(rl.TransportProtocol, protocol.Name, true) == 0)
+                    {
+                        portCounter++;
+                        wr.WriteBodyText(rp.Name, "body");
+                    }
+                }
+            }
+
+            if (portCounter == 0)
+            {
+                wr.WriteBodyText("There are no receive ports using this protocol", "body");
+            }
+
+            wr.WriteNewLine();
+            wr.WriteNewLine();
+            wr.WriteEndSubSection();
         }
 
         #endregion
@@ -673,7 +1066,7 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
                         int counter2 = 0;
                         wr.WriteNewLine();
                         wr.WriteBodyText("Receive Locations", "artifactSubHeading");
-                        wr.WriteNewLine();
+                        //wr.WriteNewLine();
 
                         foreach (ReceiveLocation rl in port.ReceiveLocations)
                         {
@@ -713,7 +1106,7 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
                     //============================================
                     wr.WriteNewLine();
                     wr.WriteBodyText("Orchestrations bound to this receive port", "artifactSubHeading");
-                    wr.WriteNewLine();
+                    //wr.WriteNewLine();
 
                     int orchCounter = 0;
                     foreach (NameIdPair boundOrch in port.BoundOrchestrations)
@@ -736,6 +1129,110 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
         }
 
         #endregion
+
+        #region WriteApplicationReceivePorts
+
+        private void WriteApplicationReceivePorts(WordXmlWriter wr, BizTalkApplication app)
+        {
+            if (app.ReceivePorts.Count > 0)
+            {
+                int counter = 0;
+                wr.WriteStartSubSection();
+                wr.WriteNewLine();
+
+                wr.WriteBodyText("Receive Ports", "groupHeading");
+                wr.WriteNewLine();
+
+                foreach (ReceivePort port in app.ReceivePorts)
+                {
+                    counter++;
+                    wr.WriteStartSubSection();
+
+                    wr.WriteBodyTextWithPreceedingImage(string.Format("  {0}. {1}", counter, port.Name), "innerArtifactHeading", false, picReceivePortSmall, 14, 14);
+                    wr.WriteNewLine();
+
+                    string trackingType = (int)port.TrackingType == 0 ? "Not specified" : port.TrackingType.ToString();
+                    //string pipeline = (port.SendPipeline == null || port.SendPipeline == string.Empty) ? "Not specified" : port.SendPipeline;
+
+                    wr.WriteBodyText("Authentication Type:  " + port.AuthenticationType.ToString(), "body");
+                    wr.WriteBodyText("Tracking Type:  " + trackingType, "body");
+                    //wr.WriteBodyText("Send Pipeline:  " + pipeline, "body");
+                    wr.WriteBodyText("Two-Way:  " + port.TwoWay.ToString(), "body");
+
+                    // Receive Ports
+                    if (port.ReceiveLocations.Count > 0)
+                    {
+                        int counter2 = 0;
+                        wr.WriteNewLine();
+                        wr.WriteBodyText("Receive Locations", "artifactSubHeading");
+                        //wr.WriteNewLine();
+
+                        foreach (ReceiveLocation rl in port.ReceiveLocations)
+                        {
+                            counter2++;
+                            wr.WriteNewLine();
+                            wr.WriteBodyText(string.Format("{0}. {1}", counter2, rl.Name), "bodyBold");
+                            wr.WriteNewLine();
+
+                            wr.WriteStartTable("tab1");
+
+                            TableCellData[] tcd = new TableCellData[2];
+                            tcd[0] = new TableCellData("Property", true, TableTitleBackground);
+                            tcd[1] = new TableCellData("Value", true, TableTitleBackground);
+                            wr.WriteTableRow(tcd);
+
+                            tcd[0] = new TableCellData("Address", true, TableTitleColumnBackground);
+                            tcd[1] = new TableCellData(rl.Address);
+                            wr.WriteTableRow(tcd);
+
+                            tcd[0] = new TableCellData("Transport Protocol", true, TableTitleColumnBackground);
+                            tcd[1] = new TableCellData(rl.TransportProtocol);
+                            wr.WriteTableRow(tcd);
+
+                            tcd[0] = new TableCellData("Receive Pipeline", true, TableTitleColumnBackground);
+                            tcd[1] = new TableCellData(rl.ReceivePipeline.Name);
+                            wr.WriteTableRow(tcd);
+
+                            tcd[0] = new TableCellData("Receive Handler", true, TableTitleColumnBackground);
+                            tcd[1] = new TableCellData(rl.ReceiveHandler.Name);
+                            wr.WriteTableRow(tcd);
+
+                            wr.WriteEndTable();
+                        }
+                    }
+
+                    //============================================
+                    // What orchestrations are bound to this port
+                    //============================================
+                    wr.WriteNewLine();
+                    wr.WriteBodyText("Orchestrations bound to this receive port", "artifactSubHeading");
+                    //wr.WriteNewLine();
+
+                    int orchCounter = 0;
+                    foreach (NameIdPair boundOrch in port.BoundOrchestrations)
+                    {
+                        orchCounter++;
+                        wr.WriteBodyText(boundOrch.Name, "body");
+                    }
+
+                    if (orchCounter == 0)
+                    {
+                        wr.WriteBodyText("There are no orchestrations bound to this receive port", "body");
+                    }
+
+                    wr.WriteNewLine();
+                    wr.WriteNewLine();
+                    wr.WriteEndSubSection();
+                }
+
+                wr.WriteNewLine();
+                wr.WriteEndSubSection();
+            }
+            return;
+        }
+
+        #endregion
+
 
         #region WriteOrchestrations
 
@@ -776,7 +1273,7 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
             {
                 wr.WriteNewLine();
                 wr.WriteBodyText("Invoked orchestrations", "artifactSubHeading");
-                wr.WriteNewLine();
+                //wr.WriteNewLine();
 
                 foreach (Orchestration io in o.InvokedOrchestrations)
                 {
@@ -792,7 +1289,7 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
             {
                 wr.WriteNewLine();
                 wr.WriteBodyText("Ports contained within this orchestration", "artifactSubHeading");
-                wr.WriteNewLine();
+                //wr.WriteNewLine();
 
                 foreach (OrchestrationPort p in o.Ports)
                 {
@@ -828,6 +1325,52 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
 
         #endregion
 
+        #region WriteApplicationOrchestrations
+
+        private void WriteApplicationOrchestrations(WordXmlWriter wr, BizTalkApplication app)
+        {
+            if (app.Orchestrations.Count > 0)
+            {
+                wr.WriteStartSubSection();
+                wr.WriteNewLine();
+                wr.WriteBodyText("Orchestrations", "groupHeading");
+                wr.WriteNewLine();
+                int counter = 0;
+
+                foreach (Orchestration o in app.Orchestrations)
+                {
+                    counter++;
+                    string assembly = o.ParentAssemblyFormattedName ?? "";
+                    string hostName = "";
+                    if (o.Host != null)
+                    {
+                        hostName = o.Host.Name;
+                    }
+                    string name = o.Name ?? "";
+                    wr.WriteStartSubSection();
+
+                    wr.WriteBodyTextWithPreceedingImage(string.Format("  {0}. {1}", counter, name), "innerArtifactHeading", false, picOrchestration, 14, 14);
+                    wr.WriteNewLine();
+                    wr.WriteBodyText("Parent Assembly:  " + assembly, "body");
+                    wr.WriteBodyText("Host:  " + hostName, "body");
+
+                    this.WriteOrchestrationPorts(wr, o);
+                    this.WriteInvokedOrchestrations(wr, o);
+
+                    wr.WriteNewLine();
+                    wr.WriteEndSubSection();
+                }
+
+                wr.WriteNewLine(); 
+                wr.WriteEndSubSection();
+
+            }
+
+            return;
+        }
+
+        #endregion
+
         #region WriteSendPortGroups
 
         private void WriteSendPortGroups(WordXmlWriter wr)
@@ -846,7 +1389,7 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
                     wr.WriteNewLine();
 
                     wr.WriteBodyText("Send ports contained in this group", "artifactSubHeading");
-                    wr.WriteNewLine();
+                    //wr.WriteNewLine();
 
                     foreach (NameIdPair sendPort in group.SendPorts)
                     {
@@ -858,7 +1401,7 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
                     //============================================
                     wr.WriteNewLine();
                     wr.WriteBodyText("Orchestrations bound to this send port group", "artifactSubHeading");
-                    wr.WriteNewLine();
+                    //wr.WriteNewLine();
 
                     int orchCounter = 0;
                     foreach (NameIdPair boundOrch in group.BoundOrchestrations)
@@ -880,6 +1423,64 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
         }
 
         #endregion
+
+        #region WriteApplicationSendPortGroups
+
+        private void WriteApplicationSendPortGroups(WordXmlWriter wr, BizTalkApplication app)
+        {
+            if (app.SendPortGroups.Count > 0)
+            {
+                wr.WriteStartSubSection();
+                wr.WriteNewLine();
+                wr.WriteBodyText("Send Port Groups", "groupHeading");
+                wr.WriteNewLine();
+
+                foreach (SendPortGroup group in app.SendPortGroups)
+                {
+                    wr.WriteStartSubSection();
+
+                    wr.WriteBodyTextWithPreceedingImage("  " + group.Name, "innerArtifactHeading", false, picSendPort1, 14, 14);
+                    wr.WriteNewLine();
+
+                    wr.WriteBodyText("Send ports contained in this group", "artifactSubHeading");
+                   // wr.WriteNewLine();
+
+                    foreach (NameIdPair sendPort in group.SendPorts)
+                    {
+                        wr.WriteBodyText(sendPort.Name, "body");
+                    }
+
+                    //============================================
+                    // Orchestrations bound to this send port group
+                    //============================================
+                    wr.WriteNewLine();
+                    wr.WriteBodyText("Orchestrations bound to this send port group", "artifactSubHeading");
+                    //wr.WriteNewLine();
+
+                    int orchCounter = 0;
+                    foreach (NameIdPair boundOrch in group.BoundOrchestrations)
+                    {
+                        orchCounter++;
+                        wr.WriteBodyText(boundOrch.Name, "body");
+                    }
+
+                    if (orchCounter == 0)
+                    {
+                        wr.WriteBodyText("There are no orchestrations bound to this send port group", "body");
+                    }
+
+                    wr.WriteNewLine();
+                    wr.WriteEndSubSection();
+                }
+
+                wr.WriteNewLine();
+                wr.WriteEndSubSection();
+            }
+            return;
+        }
+
+        #endregion
+
 
         #region WritePipelines
 
@@ -946,7 +1547,7 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
                     //============================================
                     wr.WriteNewLine();
                     wr.WriteBodyText("Send ports using this pipeline", "artifactSubHeading");
-                    wr.WriteNewLine();
+                    //wr.WriteNewLine();
 
                     int portCount = 0;
                     foreach (SendPort sp in this.bi.SendPorts)
@@ -962,12 +1563,15 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
 
                         if (!added)
                         {
-                            //if (string.Compare(sp.ReceivePipeline, pipeline.Name, true) == 0)
-                            if (string.Compare(sp.ReceivePipeline.Name, pipeline.Name, true) == 0)
+                            if (sp.ReceivePipeline != null) // PCA 2015-01-24
                             {
-                                added = true;
-                                portCount++;
-                                wr.WriteBodyText(sp.Name, "body");
+                                //if (string.Compare(sp.ReceivePipeline, pipeline.Name, true) == 0)
+                                if (string.Compare(sp.ReceivePipeline.Name, pipeline.Name, true) == 0)
+                                {
+                                    added = true;
+                                    portCount++;
+                                    wr.WriteBodyText(sp.Name, "body");
+                                }
                             }
                         }
                     }
@@ -982,7 +1586,7 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
                     //============================================
                     wr.WriteNewLine();
                     wr.WriteBodyText("Receive locations using this pipeline", "artifactSubHeading");
-                    wr.WriteNewLine();
+                    //wr.WriteNewLine();
 
                     portCount = 0;
                     foreach (ReceivePort rp in this.bi.ReceivePorts)
@@ -1012,13 +1616,152 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
 
         #endregion
 
+        #region WriteApplicationPipelines
+
+        private void WriteApplicationPipelines(WordXmlWriter wr, BizTalkApplication app)
+        {
+            if (this.bi.Pipelines.Count > 0)
+            {
+                int counter = 0;
+                wr.WriteStartSubSection();
+                wr.WriteNewLine();
+                wr.WriteBodyText("Pipelines", "groupHeading");
+                wr.WriteNewLine();
+
+                foreach (Pipeline pipeline in app.Pipelines)
+                {
+                    counter++;
+                    wr.WriteStartSubSection();
+
+                    wr.WriteBodyTextWithPreceedingImage(string.Format("  {0}. {1}", counter, pipeline.Name), "innerArtifactHeading", false, picPipeline, 14, 14);
+
+                    wr.WriteNewLine();
+
+                    wr.WriteBodyText("Pipeline Type: " + pipeline.PipelineType.ToString(), "body");
+                    wr.WriteBodyText("Assembly Name: " + pipeline.ParentAssembly.Name, "body");
+
+                    //============================================
+                    // Process Flow
+                    //============================================
+                    wr.WriteNewLine();
+                    wr.WriteBodyText("Pipeline Process Flow", "artifactSubHeading");
+
+                    XmlDocument pipelineData = new XmlDocument();
+                    pipelineData.LoadXml(pipeline.ViewData);
+
+                    XmlNodeList stageNodes = pipelineData.SelectNodes("./Document/Stages/Stage/PolicyFileStage");
+
+                    int j = 0;
+                    foreach (XmlNode stageNode in stageNodes)
+                    {
+                        j++;
+                        wr.WriteNewLine();
+                        wr.WriteBodyText(j.ToString() + ".  " + stageNode.Attributes.GetNamedItem("Name").Value, "bodyBold");
+
+                        XmlNodeList componentNodes = stageNode.SelectNodes("../Components/Component");
+
+                        int i = 0;
+                        bool found = false;
+                        foreach (XmlNode componentNode in componentNodes)
+                        {
+                            found = true;
+                            i++;
+                            wr.WriteNewLine();
+                            wr.WriteBodyText("     " + componentNode.SelectSingleNode("./ComponentName").InnerText, "bodyBold");
+                            wr.WriteBodyText("     " + componentNode.SelectSingleNode("./Name").InnerText, "body");
+                        }
+
+                        if (found)
+                        {
+                            wr.WriteNewLine();
+                        }
+                    }
+
+                    //============================================
+                    // Send ports using this pipeline
+                    //============================================
+                    wr.WriteNewLine();
+                    wr.WriteBodyText("Send ports using this pipeline", "artifactSubHeading");
+                    //wr.WriteNewLine();
+
+                    int portCount = 0;
+                    foreach (SendPort sp in this.bi.SendPorts)
+                    {
+                        bool added = false;
+                        //if (string.Compare(sp.SendPipeline, pipeline.Name, true) == 0)
+                        if (string.Compare(sp.SendPipeline.Name, pipeline.Name, true) == 0)
+                        {
+                            added = true;
+                            portCount++;
+                            wr.WriteBodyText(sp.Name, "body");
+                        }
+
+                        if (!added)
+                        {
+                            if (sp.ReceivePipeline != null) // PCA 2015-01-24
+                            {
+                                //if (string.Compare(sp.ReceivePipeline, pipeline.Name, true) == 0)
+                                if (string.Compare(sp.ReceivePipeline.Name, pipeline.Name, true) == 0)
+                                {
+                                    added = true;
+                                    portCount++;
+                                    wr.WriteBodyText(sp.Name, "body");
+                                }
+                            }
+                        }
+                    }
+
+                    if (portCount == 0)
+                    {
+                        wr.WriteBodyText("There are no send ports using this pipeline", "body");
+                    }
+
+                    //============================================
+                    // Receive locations using this pipeline
+                    //============================================
+                    wr.WriteNewLine();
+                    wr.WriteBodyText("Receive locations using this pipeline", "artifactSubHeading");
+                    //wr.WriteNewLine();
+
+                    portCount = 0;
+                    foreach (ReceivePort rp in this.bi.ReceivePorts)
+                    {
+                        foreach (ReceiveLocation rl in rp.ReceiveLocations)
+                        {
+                            if (string.Compare(rl.ReceivePipeline.Name, pipeline.Name, true) == 0)
+                            {
+                                portCount++;
+                                wr.WriteBodyText(rl.Name, "body");
+                            }
+                        }
+                    }
+
+                    if (portCount == 0)
+                    {
+                        wr.WriteBodyText("There are no receive locations using this pipeline", "body");
+                    }
+
+                    wr.WriteNewLine();
+                    wr.WriteNewLine();
+                    wr.WriteEndSubSection();
+                }
+
+                wr.WriteNewLine();
+                wr.WriteEndSubSection();
+            }
+            return;
+        }
+
+        #endregion
+
+
         #region WriteTransportInfo
 
         private void WriteTransportInfo(WordXmlWriter wr, TransportInfo ti, string title)
         {
             wr.WriteNewLine();
             wr.WriteBodyText(title, "artifactSubHeading", false);
-            wr.WriteNewLine();
+            //wr.WriteNewLine();
             if (ti != null && ti.Type != string.Empty)
             {
                 wr.WriteStartTable("tab1");
@@ -1073,6 +1816,147 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers.Word
             if (this.PercentageDocumentationComplete != null)
             {
                 this.PercentageDocumentationComplete(percentage);
+            }
+        }
+
+        #region WriteRules
+
+        // PCA 2015-01-24
+        private void WriteRules(WordXmlWriter wr, bool publishRules, string[] rulesPolicyFilters = null, string[] rulesVocabularyFilters = null) 
+        {
+            rulesPolicyFilters = rulesPolicyFilters ?? new string[0] { };
+            rulesVocabularyFilters = rulesVocabularyFilters ?? new string[0] { };
+
+            if (publishRules)
+            {
+
+                RulesEngineHelper reh = new RulesEngineHelper(bi.RulesServer, bi.RulesDatabase);
+                reh.PrepareVocabs();
+
+                BizTalkBaseObjectCollectionEx rules = reh.GetRuleSets();
+
+                if (rules.Count > 0)
+                {
+                    wr.WritePageBreak();
+                    wr.WriteBodyText("BRE Policies", "configSectionHeading");
+                    wr.WriteNewLine();
+
+                    foreach (RuleArtifact ra in rules)
+                    {
+                        if (rulesPolicyFilters.GetLength(0) > 0) // PCA 2015-01-24
+                        {
+                            foreach (string filter in rulesPolicyFilters) // PCA 2015-01-24
+                            {
+                                if (ra.FullName.StartsWith(filter)) // PCA 2015-01-24
+                                {
+                                    wr.WriteStartSubSection();
+                                    wr.WriteBodyTextWithPreceedingImage(string.Format("{0}", ra.FullName), "artifactHeading", false, picAssembly, 14, 14);
+                                    wr.WriteNewLine();
+
+                                    wr.WriteBodyText("Description:  " + ra.CustomDescription ?? "", "body");
+                                    wr.WriteBodyText("Version:  " + ra.MajorVersion.ToString() + "." + ra.MinorVersion.ToString(), "body");
+
+                                    wr.WriteNewLine();
+                                    wr.WriteEndSubSection();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            wr.WriteStartSubSection();
+                            wr.WriteBodyTextWithPreceedingImage(string.Format("{0}", ra.FullName), "artifactHeading", false, picAssembly, 14, 14);
+                            wr.WriteNewLine();
+
+                            wr.WriteBodyText("Description:  " + ra.CustomDescription ?? "", "body");
+                            wr.WriteBodyText("Version:  " + ra.MajorVersion.ToString() + "." + ra.MinorVersion.ToString(), "body");
+
+                            wr.WriteNewLine();
+                            wr.WriteEndSubSection();
+                        }
+
+                    }
+
+                }
+
+                BizTalkBaseObjectCollectionEx vocs = reh.GetVocabularies();
+
+                if (vocs.Count > 0)
+                {
+
+                    wr.WritePageBreak();
+                    wr.WriteBodyText("BRE Vocabularies", "configSectionHeading");
+                    wr.WriteNewLine();
+
+                    foreach (RuleArtifact ra in vocs)
+                    {
+                        if (rulesVocabularyFilters.GetLength(0) > 0) // PCA 2015-01-24
+                        {
+                            foreach (string filter in rulesVocabularyFilters) // PCA 2015-01-24
+                            {
+                                if (ra.FullName.StartsWith(filter)) // PCA 2015-01-24
+                                {
+                                    wr.WriteStartSubSection();
+                                    wr.WriteBodyTextWithPreceedingImage(string.Format("{0}", ra.FullName), "artifactHeading", false, picAssembly, 14, 14);
+                                    wr.WriteNewLine();
+
+                                    wr.WriteBodyText("Description:  " + ra.CustomDescription ?? "", "body");
+                                    wr.WriteBodyText("Version:  " + ra.MajorVersion.ToString() + "." + ra.MinorVersion.ToString(), "body");
+
+                                    wr.WriteNewLine();
+                                    wr.WriteEndSubSection();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            wr.WriteStartSubSection();
+                            wr.WriteBodyTextWithPreceedingImage(string.Format("{0}", ra.FullName), "artifactHeading", false, picAssembly, 14, 14);
+                            wr.WriteNewLine();
+
+                            wr.WriteBodyText("Description:  " + ra.CustomDescription ?? "", "body");
+                            wr.WriteBodyText("Version:  " + ra.MajorVersion.ToString() + "." + ra.MinorVersion.ToString(), "body");
+
+                            wr.WriteNewLine();
+                            wr.WriteEndSubSection();
+                        }
+                    }
+                }
+            }
+        }
+
+
+        #endregion
+
+
+        // PCA 2015-01-24
+        private void WriteApplications(WordXmlWriter wr) 
+        {
+
+            if (bi.Applications.Count > 0)
+            {
+                wr.WritePageBreak();
+                wr.WriteBodyText("Applications", "configSectionHeading");
+                wr.WriteNewLine();
+                int counter = 0;
+
+                foreach (BizTalkApplication app in bi.Applications)
+                {
+                    counter++;
+                    wr.WriteStartSubSection();
+
+                    wr.WriteBodyTextWithPreceedingImage(string.Format("  {0}. {1}", counter, app.Name), "artifactHeading", false, picHost, 14, 14);
+
+                    WriteApplicationOrchestrations(wr, app);
+                    WriteApplicationSendPorts(wr, app);
+                    WriteApplicationSendPortGroups(wr, app);
+                    WriteApplicationReceivePorts(wr, app);
+                    WriteApplicationSchemas(wr, app);
+                    WriteApplicationMaps(wr, app);
+                    WriteApplicationAssemblies(wr, app);                    
+
+                    wr.WriteNewLine();
+                    wr.WriteEndSubSection();
+                }
             }
         }
 

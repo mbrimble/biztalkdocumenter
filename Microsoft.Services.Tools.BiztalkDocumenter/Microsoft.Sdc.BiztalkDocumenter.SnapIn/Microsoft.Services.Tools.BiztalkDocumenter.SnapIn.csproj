@@ -137,7 +137,7 @@
     <None Include="Resources\DocNodeIcon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\BizTalkOM-BTS2013\BizTalkOM Shared Library\Microsoft.Services.Tools.BizTalkOM\Microsoft.Services.Tools.BizTalkOM.csproj">
+    <ProjectReference Include="..\Microsoft.Services.Tools.BizTalkOM\Microsoft.Services.Tools.BizTalkOM.csproj">
       <Project>{88c5f0a8-851c-4f10-8ab6-67b6b723b837}</Project>
       <Name>Microsoft.Services.Tools.BizTalkOM</Name>
     </ProjectReference>

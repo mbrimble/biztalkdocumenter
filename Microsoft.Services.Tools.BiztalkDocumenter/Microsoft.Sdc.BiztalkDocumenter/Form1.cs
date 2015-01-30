@@ -124,6 +124,18 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
         private Button buttonSsoProd;
         private Button buttonSsoTest;
         private Button buttonSsoStage;
+        private LinkLabel linkAdditionalFilters;
+        private TabPage tabAdditionalFilters;
+        private GroupBox grpBoxAdditionalFilters;
+        private TextBox txtBREPolicyFilters;
+        private Label label12;
+        private Label label15;
+        private Label label13;
+        private TextBox txtAdapterFilters;
+        private TextBox txtHostFilters;
+        private TextBox txtBREVocabularyFilters;
+        private Label label14;
+        private Label label16;
         private Button buttonSsoBuild;
         #endregion
 
@@ -237,11 +249,6 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
-            //Added for SSO Config Documenter
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            //Added for SSO Config Documenter end
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -278,6 +285,39 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             this.txtOutputDir = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBrowse = new System.Windows.Forms.Button();
+            //Added for SSO Config Documenter
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            //Added for SSO Config Documenter end
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.grpBoxSSO = new System.Windows.Forms.GroupBox();
+            this.textBoxSsoProd = new System.Windows.Forms.TextBox();
+            this.textBoxSsoTest = new System.Windows.Forms.TextBox();
+            this.textBoxSsoStage = new System.Windows.Forms.TextBox();
+            //this.textBoxSsoBuild = new System.Windows.Forms.TextBox();
+            this.buttonSsoProd = new System.Windows.Forms.Button();
+            this.buttonSsoTest = new System.Windows.Forms.Button();
+            this.buttonSsoStage = new System.Windows.Forms.Button();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.listBoxSsoApplications = new System.Windows.Forms.CheckedListBox();
+            this.tabAdditionalFilters = new System.Windows.Forms.TabPage();
+            this.grpBoxAdditionalFilters = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtAdapterFilters = new System.Windows.Forms.TextBox();
+            this.txtHostFilters = new System.Windows.Forms.TextBox();
+            this.txtBREVocabularyFilters = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtBREPolicyFilters = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.dlgConfigFrameworkOpenFile = new System.Windows.Forms.OpenFileDialog();
             this.dlgConfigFrameworkSaveFile = new System.Windows.Forms.SaveFileDialog();
@@ -293,39 +333,20 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             this.dlgResultFileSave = new System.Windows.Forms.SaveFileDialog();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            //Added for SSOConfig
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
-            this.listBoxSsoApplications = new System.Windows.Forms.CheckedListBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.grpBoxSSO = new System.Windows.Forms.GroupBox();
-            this.textBoxSsoProd = new System.Windows.Forms.TextBox();
-            this.textBoxSsoTest = new System.Windows.Forms.TextBox();
-            this.textBoxSsoStage = new System.Windows.Forms.TextBox();
-            //this.textBoxSsoBuild = new System.Windows.Forms.TextBox();
-            this.buttonSsoProd = new System.Windows.Forms.Button();
-            this.buttonSsoTest = new System.Windows.Forms.Button();
-            this.buttonSsoStage = new System.Windows.Forms.Button();
             this.buttonSsoBuild = new System.Windows.Forms.Button();
-            //Added for SSO Config Documenter End
+            this.linkAdditionalFilters = new System.Windows.Forms.LinkLabel();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tabPage2.SuspendLayout();            
+            this.tabPage2.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.grpBoxAdvanced.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.grpBoxSSO.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -333,6 +354,9 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             this.tabPage5.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.grpBoxSSO.SuspendLayout();
+            this.tabAdditionalFilters.SuspendLayout();
+            this.grpBoxAdditionalFilters.SuspendLayout();
             this.SuspendLayout();
             // 
             // folderBrowserDialog1
@@ -355,6 +379,7 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabAdditionalFilters);
             this.tabControl1.Location = new System.Drawing.Point(-8, -24);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -637,7 +662,7 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             this.label33.Size = new System.Drawing.Size(493, 33);
             this.label33.TabIndex = 91;
             this.label33.Text = "Select the SSO Applications whose key/value pairs you would like included in the " +
-                "documentation (Included under seperate heading)";
+                "documentation (Included under separate heading)";
             // 
             // grpBoxSSO
             // 
@@ -744,7 +769,7 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             // label34
             // 
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34 .ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
+            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
             this.label34.Location = new System.Drawing.Point(12, 22);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(493, 42);
@@ -1050,12 +1075,12 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.White;
-            this.tabPage4.Controls.Add(this.panel4);
-            this.tabPage4.Controls.Add(this.label10);
-            this.tabPage4.Controls.Add(this.label9);
-            this.tabPage4.Controls.Add(this.txtResourceFolder);
-            this.tabPage4.Controls.Add(this.label5);
             this.tabPage4.Controls.Add(this.button1);
+            this.tabPage4.Controls.Add(this.panel4);
+            this.tabPage4.Controls.Add(this.label5);
+            this.tabPage4.Controls.Add(this.label10);
+            this.tabPage4.Controls.Add(this.txtResourceFolder);
+            this.tabPage4.Controls.Add(this.label9);
             this.tabPage4.Controls.Add(this.cbShowOutput);
             this.tabPage4.Controls.Add(this.txtReportTitle);
             this.tabPage4.Controls.Add(this.label6);
@@ -1116,32 +1141,30 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             // 
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
-            this.label10.Location = new System.Drawing.Point(16, 280);
+            this.label10.Location = new System.Drawing.Point(23, 249);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(480, 48);
+            this.label10.Size = new System.Drawing.Size(480, 61);
             this.label10.TabIndex = 60;
-            this.label10.Text = "Any files and subdirectories contained within the resource folder will be compile" +
-    "d into the CHM so that you can enhance your documentation by providing any furth" +
-    "er html information";
+            this.label10.Text = resources.GetString("label10.Text");
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
-            this.label9.Location = new System.Drawing.Point(40, 224);
+            this.label9.Location = new System.Drawing.Point(26, 192);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(440, 48);
             this.label9.TabIndex = 59;
-            this.label9.Text = "If you are using the CHM output provider you may specify the name of a folder con" +
-    "taining a \'titlePage.htm\' and any associated images to produce a custom look and" +
-    " feel to your CHM title page.";
+            this.label9.Text = "If you are using the CHM output provider you may specify a resource folder contai" +
+    "ning a \'titlePage.htm\' and any associated images to produce a custom look and fe" +
+    "el to your CHM title page.";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtResourceFolder
             // 
             this.txtResourceFolder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtResourceFolder.Location = new System.Drawing.Point(184, 352);
+            this.txtResourceFolder.Location = new System.Drawing.Point(176, 366);
             this.txtResourceFolder.Name = "txtResourceFolder";
             this.txtResourceFolder.Size = new System.Drawing.Size(208, 20);
             this.txtResourceFolder.TabIndex = 56;
@@ -1150,7 +1173,7 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
-            this.label5.Location = new System.Drawing.Point(72, 354);
+            this.label5.Location = new System.Drawing.Point(64, 368);
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label5.Size = new System.Drawing.Size(104, 16);
@@ -1161,7 +1184,7 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             // 
             this.button1.BackColor = System.Drawing.Color.Silver;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(397, 352);
+            this.button1.Location = new System.Drawing.Point(389, 366);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(24, 19);
             this.button1.TabIndex = 57;
@@ -1175,7 +1198,7 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             this.cbShowOutput.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbShowOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbShowOutput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
-            this.cbShowOutput.Location = new System.Drawing.Point(184, 184);
+            this.cbShowOutput.Location = new System.Drawing.Point(184, 165);
             this.cbShowOutput.Name = "cbShowOutput";
             this.cbShowOutput.Size = new System.Drawing.Size(200, 24);
             this.cbShowOutput.TabIndex = 55;
@@ -1251,6 +1274,134 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             this.btnBrowse.Text = "...";
             this.btnBrowse.UseVisualStyleBackColor = false;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // listBoxSsoApplications
+            // 
+            this.listBoxSsoApplications.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listBoxSsoApplications.CheckOnClick = true;
+            this.listBoxSsoApplications.FormattingEnabled = true;
+            this.listBoxSsoApplications.Location = new System.Drawing.Point(31, 80);
+            this.listBoxSsoApplications.Name = "listBoxSsoApplications";
+            this.listBoxSsoApplications.Size = new System.Drawing.Size(487, 167);
+            this.listBoxSsoApplications.TabIndex = 92;
+            // 
+            // tabAdditionalFilters
+            // 
+            this.tabAdditionalFilters.BackColor = System.Drawing.Color.White;
+            this.tabAdditionalFilters.Controls.Add(this.grpBoxAdditionalFilters);
+            this.tabAdditionalFilters.Location = new System.Drawing.Point(4, 22);
+            this.tabAdditionalFilters.Name = "tabAdditionalFilters";
+            this.tabAdditionalFilters.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAdditionalFilters.Size = new System.Drawing.Size(560, 438);
+            this.tabAdditionalFilters.TabIndex = 5;
+            this.tabAdditionalFilters.Text = "tabAdditionalFilters";
+            // 
+            // grpBoxAdditionalFilters
+            // 
+            this.grpBoxAdditionalFilters.Controls.Add(this.label16);
+            this.grpBoxAdditionalFilters.Controls.Add(this.label15);
+            this.grpBoxAdditionalFilters.Controls.Add(this.label13);
+            this.grpBoxAdditionalFilters.Controls.Add(this.txtAdapterFilters);
+            this.grpBoxAdditionalFilters.Controls.Add(this.txtHostFilters);
+            this.grpBoxAdditionalFilters.Controls.Add(this.txtBREVocabularyFilters);
+            this.grpBoxAdditionalFilters.Controls.Add(this.label14);
+            this.grpBoxAdditionalFilters.Controls.Add(this.txtBREPolicyFilters);
+            this.grpBoxAdditionalFilters.Controls.Add(this.label12);
+            this.grpBoxAdditionalFilters.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpBoxAdditionalFilters.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
+            this.grpBoxAdditionalFilters.Location = new System.Drawing.Point(31, 37);
+            this.grpBoxAdditionalFilters.Name = "grpBoxAdditionalFilters";
+            this.grpBoxAdditionalFilters.Size = new System.Drawing.Size(499, 274);
+            this.grpBoxAdditionalFilters.TabIndex = 33;
+            this.grpBoxAdditionalFilters.TabStop = false;
+            this.grpBoxAdditionalFilters.Text = "Additional Filters";
+            // 
+            // label16
+            // 
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
+            this.label16.Location = new System.Drawing.Point(6, 16);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(487, 93);
+            this.label16.TabIndex = 61;
+            this.label16.Text = resources.GetString("label16.Text");
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label15
+            // 
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
+            this.label15.Location = new System.Drawing.Point(6, 140);
+            this.label15.Name = "label15";
+            this.label15.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label15.Size = new System.Drawing.Size(125, 20);
+            this.label15.TabIndex = 41;
+            this.label15.Text = "Adapters Filter";
+            // 
+            // label13
+            // 
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
+            this.label13.Location = new System.Drawing.Point(6, 193);
+            this.label13.Name = "label13";
+            this.label13.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label13.Size = new System.Drawing.Size(125, 20);
+            this.label13.TabIndex = 41;
+            this.label13.Text = "BRE Vocabularies Filter";
+            // 
+            // txtAdapterFilters
+            // 
+            this.txtAdapterFilters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAdapterFilters.Location = new System.Drawing.Point(137, 138);
+            this.txtAdapterFilters.Name = "txtAdapterFilters";
+            this.txtAdapterFilters.Size = new System.Drawing.Size(343, 20);
+            this.txtAdapterFilters.TabIndex = 40;
+            // 
+            // txtHostFilters
+            // 
+            this.txtHostFilters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHostFilters.Location = new System.Drawing.Point(137, 112);
+            this.txtHostFilters.Name = "txtHostFilters";
+            this.txtHostFilters.Size = new System.Drawing.Size(343, 20);
+            this.txtHostFilters.TabIndex = 39;
+            // 
+            // txtBREVocabularyFilters
+            // 
+            this.txtBREVocabularyFilters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBREVocabularyFilters.Location = new System.Drawing.Point(137, 191);
+            this.txtBREVocabularyFilters.Name = "txtBREVocabularyFilters";
+            this.txtBREVocabularyFilters.Size = new System.Drawing.Size(343, 20);
+            this.txtBREVocabularyFilters.TabIndex = 42;
+            // 
+            // label14
+            // 
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
+            this.label14.Location = new System.Drawing.Point(6, 114);
+            this.label14.Name = "label14";
+            this.label14.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label14.Size = new System.Drawing.Size(125, 20);
+            this.label14.TabIndex = 40;
+            this.label14.Text = "Hosts Filter";
+            // 
+            // txtBREPolicyFilters
+            // 
+            this.txtBREPolicyFilters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBREPolicyFilters.Location = new System.Drawing.Point(137, 165);
+            this.txtBREPolicyFilters.Name = "txtBREPolicyFilters";
+            this.txtBREPolicyFilters.Size = new System.Drawing.Size(343, 20);
+            this.txtBREPolicyFilters.TabIndex = 41;
+            // 
+            // label12
+            // 
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
+            this.label12.Location = new System.Drawing.Point(6, 167);
+            this.label12.Name = "label12";
+            this.label12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label12.Size = new System.Drawing.Size(125, 20);
+            this.label12.TabIndex = 40;
+            this.label12.Text = "BRE Policies Filter";
             // 
             // imageList1
             // 
@@ -1473,12 +1624,35 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             this.linkLabel4.VisitedLinkColor = System.Drawing.Color.RoyalBlue;
             this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
             // 
+            // linkAdditionalFilters
+            // 
+            this.linkAdditionalFilters.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
+            this.linkAdditionalFilters.DisabledLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
+            this.linkAdditionalFilters.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkAdditionalFilters.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
+            this.linkAdditionalFilters.Image = ((System.Drawing.Image)(resources.GetObject("linkAdditionalFilters.Image")));
+            this.linkAdditionalFilters.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.linkAdditionalFilters.LinkArea = new System.Windows.Forms.LinkArea(0, 14);
+            this.linkAdditionalFilters.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.linkAdditionalFilters.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
+            this.linkAdditionalFilters.Location = new System.Drawing.Point(22, 529);
+            this.linkAdditionalFilters.Name = "linkAdditionalFilters";
+            this.linkAdditionalFilters.Size = new System.Drawing.Size(122, 23);
+            this.linkAdditionalFilters.TabIndex = 60;
+            this.linkAdditionalFilters.TabStop = true;
+            this.linkAdditionalFilters.Text = "Additional Filters";
+            this.linkAdditionalFilters.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.linkAdditionalFilters.UseCompatibleTextRendering = true;
+            this.linkAdditionalFilters.VisitedLinkColor = System.Drawing.Color.RoyalBlue;
+            this.linkAdditionalFilters.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAdditionalFilters_LinkClicked);
+            // 
             // Form1
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.linkLabel13;
             this.ClientSize = new System.Drawing.Size(552, 674);
+            this.Controls.Add(this.linkAdditionalFilters);
             this.Controls.Add(this.linkLabel4);
             this.Controls.Add(this.linkLabel13);
             this.Controls.Add(this.linkLabel12);
@@ -1518,6 +1692,11 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             this.tabPage5.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.grpBoxSSO.ResumeLayout(false);
+            this.grpBoxSSO.PerformLayout();
+            this.tabAdditionalFilters.ResumeLayout(false);
+            this.grpBoxAdditionalFilters.ResumeLayout(false);
+            this.grpBoxAdditionalFilters.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1999,6 +2178,27 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             documenter.ConfigFrameworkFileName = this.txtConfigFrameworkFile.Text;
             documenter.IncludeReferences = this.cbIncludeReferences.Checked;
 
+            if (!String.IsNullOrEmpty(this.txtHostFilters.Text)) // PCA 2015-01-06
+                documenter.HostFilters = this.txtHostFilters.Text.Split('|');
+            else
+                documenter.HostFilters = new string[0] { };
+
+            if (!String.IsNullOrEmpty(this.txtAdapterFilters.Text)) // PCA 2015-01-06
+                documenter.AdapterFilters = this.txtAdapterFilters.Text.Split('|');
+            else
+                documenter.AdapterFilters = new string[0] { };
+
+            if (!String.IsNullOrEmpty(this.txtBREPolicyFilters.Text)) // PCA 2015-01-06
+                documenter.RulesPolicyFilters = this.txtBREPolicyFilters.Text.Split('|');
+            else
+                documenter.RulesPolicyFilters = new string[0] { };
+
+            if (!String.IsNullOrEmpty(this.txtBREVocabularyFilters.Text)) // PCA 2015-01-06
+                documenter.RulesVocabularyFilters = this.txtBREVocabularyFilters.Text.Split('|');
+            else
+                documenter.RulesVocabularyFilters = new string[0] { };
+
+
             //TO BE ADDED FROM Red Eyed Monster version
             //documenter.SsoBuild = textBoxSsoBuild.Text;
             documenter.SsoStage = textBoxSsoStage.Text;
@@ -2277,6 +2477,12 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
 
             }
         }
+
+        private void linkAdditionalFilters_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {            
+            this.tabControl1.SelectedTab = tabAdditionalFilters;        
+        }
+
 
     }
 }

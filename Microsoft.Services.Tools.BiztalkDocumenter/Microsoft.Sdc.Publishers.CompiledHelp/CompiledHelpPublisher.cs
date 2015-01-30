@@ -170,7 +170,8 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers
         /// <param name="ssoApplications"></param>
         /// <param name="bizTalkConfigurationPath"></param>
         public void Publish(BizTalkInstallation bi, PublishType publishType, string resourceFolder, string publishFolder,
-                          string reportTitle, bool publishRules, string[] ssoLocations, string[] ssoApplications, string bizTalkConfigurationPath)
+                          string reportTitle, bool publishRules, string[] ssoLocations, string[] ssoApplications, string bizTalkConfigurationPath
+                            , string[] rulesPolicyFilters = null, string[] rulesVocabularyFilters = null, string[] hostFilters = null, string[] adapterFilters = null) // PCA 2015-01-03 - filters added
         {
             this.bi = bi;
             this.resourceFolder = resourceFolder;
@@ -193,8 +194,8 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers
             this.WriteSso(xsltArgs); //MTB 08/03/2014
             this.WriteParties(bi, xsltArgs);
             this.UpdatePercentageComplete(10);
-            this.WritePlatformSettings(bi, xsltArgs);
-            this.WriteRules(bi, publishRules);
+            this.WritePlatformSettings(bi, xsltArgs, hostFilters, adapterFilters);
+            this.WriteRules(bi, publishRules, rulesPolicyFilters, rulesVocabularyFilters); // PCA 2015-01-03 - rulesPolicyFilter added
             this.WriteConfiguration(xsltArgs);
             this.WriteAdditionalNotes();
 
@@ -213,8 +214,12 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers
         }
 
 
-        private void WriteRules(BizTalkInstallation bi, bool publishRules)
+        private void WriteRules(BizTalkInstallation bi, bool publishRules
+                            , string[] rulesPolicyFilters = null, string[] rulesVocabularyFilters = null) // PCA 2015-01-03
         {
+            rulesPolicyFilters = rulesPolicyFilters ?? new string[0] { };
+            rulesVocabularyFilters = rulesVocabularyFilters ?? new string[0] { };
+
             if (publishRules)
             {
                 HelpFileNode rulesNode = null;
@@ -239,7 +244,20 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers
 
                         if (fileName != null)
                         {
-                            hfn.CreateChild(ra.FullName, fileName);
+                            if (rulesPolicyFilters.GetLength(0) > 0) // PCA 2015-01-03
+                            {
+                                foreach (string filter in rulesPolicyFilters) // PCA 2015-01-03
+                                {
+                                    if (ra.FullName.StartsWith(filter)) // PCA 2015-01-03
+                                    {
+                                        hfn.CreateChild(ra.FullName, fileName);
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                hfn.CreateChild(ra.FullName, fileName);
+                            }                                                        
                         }
                     }
 
@@ -263,13 +281,32 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers
 
                         if (fileName != null)
                         {
-                            string htmlFileName = Path.Combine(this.targetDir, "Vocabulary/" + ra.HtmlFileName);
+                            if (rulesVocabularyFilters.GetLength(0) > 0) // PCA 2015-01-03
+                            {
+                                foreach (string filter in rulesVocabularyFilters) // PCA 2015-01-03
+                                {
+                                    if (ra.FullName.StartsWith(filter)) // PCA 2015-01-03
+                                    {
+                                        string htmlFileName = Path.Combine(this.targetDir, "Vocabulary/" + ra.HtmlFileName);
 
-                            //this.vocabularyTransform.Transform(fileName, htmlFileName, new XmlUrlResolver()); MTB 30/06/2013
+                                        //this.vocabularyTransform.Transform(fileName, htmlFileName, new XmlUrlResolver()); MTB 30/06/2013
 
-                            this.vocabularyTransform.Transform(fileName, htmlFileName);
+                                        this.vocabularyTransform.Transform(fileName, htmlFileName);
 
-                            hfn.CreateChild(ra.FullName, htmlFileName);
+                                        hfn.CreateChild(ra.FullName, htmlFileName);
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                string htmlFileName = Path.Combine(this.targetDir, "Vocabulary/" + ra.HtmlFileName);
+
+                                //this.vocabularyTransform.Transform(fileName, htmlFileName, new XmlUrlResolver()); MTB 30/06/2013
+
+                                this.vocabularyTransform.Transform(fileName, htmlFileName);
+
+                                hfn.CreateChild(ra.FullName, htmlFileName);
+                            }
                         }
                     }
 
@@ -278,8 +315,12 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers
             }
         }
 
-        private void WritePlatformSettings(BizTalkInstallation bi, XsltArgumentList xsltArgs)
+        private void WritePlatformSettings(BizTalkInstallation bi, XsltArgumentList xsltArgs
+                            , string[] hostFilters = null, string[] adapterFilters = null) // PCA 2015-01-03
         {
+            hostFilters = hostFilters ?? new string[0] { };
+            adapterFilters = adapterFilters ?? new string[0] { };
+
             HelpFileNode hfnPlatformNode = this.hfw.RootNode.CreateChild("Platform Settings");
 
             #region Hosts
@@ -298,16 +339,38 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers
                         hfn = hfnPlatformNode.CreateChild("Hosts");
                     }
 
-                    string fileName = "Host\\" + host.Id + ".htm";
+                    if (hostFilters.GetLength(0) > 0) // PCA 2015-01-03
+                    {
+                        foreach (string filter in hostFilters) // PCA 2015-01-03
+                        {
+                            if (host.Name.StartsWith(filter)) // PCA 2015-01-03
+                            {
+                                string fileName = "Host\\" + host.Id + ".htm";
 
-                    // Write the index page entry
-                    HelpFileNode childNode = hfn.CreateChild(host.Name, fileName);
+                                // Write the index page entry
+                                HelpFileNode childNode = hfn.CreateChild(host.Name, fileName);
 
-                    this.WriteTransformedXmlDataToFile(
-                        Path.Combine(this.targetDir, fileName),
-                        host.GetXml(),
-                        this.hostTransform,
-                        xsltArgs);
+                                this.WriteTransformedXmlDataToFile(
+                                    Path.Combine(this.targetDir, fileName),
+                                    host.GetXml(),
+                                    this.hostTransform,
+                                    xsltArgs);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        string fileName = "Host\\" + host.Id + ".htm";
+
+                        // Write the index page entry
+                        HelpFileNode childNode = hfn.CreateChild(host.Name, fileName);
+
+                        this.WriteTransformedXmlDataToFile(
+                            Path.Combine(this.targetDir, fileName),
+                            host.GetXml(),
+                            this.hostTransform,
+                            xsltArgs);
+                    }
                 }
 
                 hfn.SortChildren();
@@ -330,16 +393,38 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers
                         hfn = hfnPlatformNode.CreateChild("Adapters");
                     }
 
-                    string fileName = "Protocol\\" + protocol.Id + ".htm";
+                    if (adapterFilters.GetLength(0) > 0) // PCA 2015-01-03
+                    {
+                        foreach (string filter in adapterFilters) // PCA 2015-01-03
+                        {
+                            if (protocol.Name.StartsWith(filter)) // PCA 2015-01-03
+                            {
+                                string fileName = "Protocol\\" + protocol.Id + ".htm";
 
-                    // Write the index page entry
-                    hfn.CreateChild(protocol.Name, fileName);
+                                // Write the index page entry
+                                hfn.CreateChild(protocol.Name, fileName);
 
-                    this.WriteTransformedXmlDataToFile(
-                        Path.Combine(this.targetDir, fileName),
-                        protocol.GetXml(),
-                        this.protocolTransform,
-                        xsltArgs);
+                                this.WriteTransformedXmlDataToFile(
+                                    Path.Combine(this.targetDir, fileName),
+                                    protocol.GetXml(),
+                                    this.protocolTransform,
+                                    xsltArgs);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        string fileName = "Protocol\\" + protocol.Id + ".htm";
+
+                        // Write the index page entry
+                        hfn.CreateChild(protocol.Name, fileName);
+
+                        this.WriteTransformedXmlDataToFile(
+                            Path.Combine(this.targetDir, fileName),
+                            protocol.GetXml(),
+                            this.protocolTransform,
+                            xsltArgs);
+                    }
                 }
 
                 if (hfn != null)
@@ -1100,15 +1185,34 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers
         private void WriteAdditionalNotes()
         {
             HelpFileNode hfnDevNotes;
-            if (!string.IsNullOrEmpty(this.resourceFolder) && Directory.GetFiles(this.resourceFolder, "*.htm*").Length > 0)
+            HelpFileNode hfnDevNotesSub; // PCA 2015-01-03 - To allow subfolders 
+
+            if (!string.IsNullOrEmpty(this.resourceFolder) && Directory.GetFiles(this.resourceFolder, "*.*ht*").Length > 0)  // PCA 2015-01-03 - Changed "*.htm*"  for "*.*ht*" to allow files with .mht extensions (Single File Web Pages) 
             {
                 hfnDevNotes = this.hfw.RootNode.CreateChild("Additional Notes");
-                foreach (string filename in Directory.GetFiles(this.resourceFolder, "*.htm*"))
+
+                foreach (string directory in Directory.GetDirectories(this.resourceFolder)) // PCA 2015-01-03 - To allow subfolders 
+                {
+                    if (Directory.GetFiles(directory, "*.*ht*").Length > 0)
+                    {
+                        hfnDevNotesSub = hfnDevNotes.CreateChild(Path.GetFileName(directory));
+
+                        foreach (string filename in Directory.GetFiles(directory, "*.*ht*")) // PCA 2015-01-03 - Changed "*.htm*"  for "*.*ht*" to allow files with .mht extensions (Single File Web Pages) 
+                        {
+                            string devNote = Path.GetFileName(filename);
+                            if (devNote != "titlePage.htm")
+                                hfnDevNotesSub.CreateChild(Path.GetFileNameWithoutExtension(filename), Path.Combine(this.targetDir + "\\AdditionalNotes", Path.GetFileName(directory), devNote)); // PCA 2015-01-03 - To allow subfolders 
+                        }
+                    }
+                }
+
+                foreach (string filename in Directory.GetFiles(this.resourceFolder, "*.*ht*")) // PCA 2015-01-03 - Changed "*.htm*"  for "*.*ht*" to allow files with .mht extensions (Single File Web Pages) 
                 {
                     string devNote = Path.GetFileName(filename);
-                    if (devNote != "titlePage.htm")
-                        hfnDevNotes.CreateChild(Path.GetFileNameWithoutExtension(filename), Path.Combine(this.targetDir, devNote));
+                    if (devNote != "titlePage.htm") 
+                        hfnDevNotes.CreateChild(Path.GetFileNameWithoutExtension(filename), Path.Combine(this.targetDir, "AdditionalNotes", devNote)); // PCA 2015-01-03
                 }
+
             }
         } //MTB 08/03/2014
 
@@ -1324,6 +1428,8 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers
                 Directory.CreateDirectory(Path.Combine(targetDir, "SSO")); //MTB 09/03/2014
                 Directory.CreateDirectory(Path.Combine(targetDir, "SSOMulti")); //MTB 09/03/2014
                 Directory.CreateDirectory(Path.Combine(targetDir, "Config")); //MTB 09/03/2014
+                Directory.CreateDirectory(Path.Combine(targetDir, "AdditionalNotes")); //PCA 2015-01-03
+
                 //============================================
                 // Read images and CSS files from resource file 
                 // and write the to disk in temporary location
@@ -1384,6 +1490,8 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers
                 this.SaveEmbeddedGraphicToDisk("topRight.jpg", a, targetDir);
                 this.SaveEmbeddedGraphicToDisk("topRight.jpg", a, targetDir);
                 this.SaveEmbeddedGraphicToDisk("topSpacer.gif", a, targetDir);
+
+
 
 
                 //============================================
@@ -1478,21 +1586,27 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers
 
                 foreach (FileInfo fi in di.GetFiles())
                 {
-                    if (string.Compare(fi.Name, "titlePage.htm", true) == 0)
+                    if (string.Compare(fi.Name, "titlePage.htm", true) == 0)  
                     {
                         StreamReader customTitleReader = new StreamReader(fi.FullName);
                         html = customTitleReader.ReadToEnd();
                         customTitleReader.Close();
                     }
+                    // For moving all images that might be referenced by the titlePage.htm web page
+                    else if (Path.GetExtension(fi.Name) == ".jpg" || Path.GetExtension(fi.Name) == ".gif" || Path.GetExtension(fi.Name) == ".png") // PCA 2015-01-03                      
+                    {
+                        fi.CopyTo(Path.Combine(targetDir, fi.Name), true); // PCA 2015-01-03
+                    }
                     else
                     {
-                        fi.CopyTo(Path.Combine(targetDir, fi.Name), true);
+                        fi.CopyTo(Path.Combine(targetDir + "\\AdditionalNotes", fi.Name), true); // PCA 2015-01-03
                     }
                 }
 
-                foreach (DirectoryInfo sdi in di.GetDirectories())
+                // For moving all subfolders (only one level) and being added to the Additional Notes section on the chm file
+                foreach (DirectoryInfo sdi in di.GetDirectories()) // PCA 2015-01-03
                 {
-                    this.CopyDirectory(sdi.FullName, Path.Combine(targetDir, sdi.Name));
+                    this.CopyDirectory(sdi.FullName, Path.Combine(targetDir + "\\AdditionalNotes", sdi.Name));
                 }
             }
             return html;

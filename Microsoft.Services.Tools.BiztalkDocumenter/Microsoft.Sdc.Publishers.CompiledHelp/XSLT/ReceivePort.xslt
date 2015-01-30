@@ -91,7 +91,19 @@
                                     <xsl:value-of select="./Name" />
                                 </td>
                             </tr>
+                          <!-- Added by PCA 2015-01-03 -->
+                          <xsl:if test="string-length(./CustomDescription)>0">
                             <tr>
+                              <td></td>
+                              <td></td>
+                              <td width="149">Description:</td>
+                              <td>
+                                <xsl:value-of select="./CustomDescription" />
+                              </td>
+                            </tr>
+                          </xsl:if>
+                          <!-- End Added by PCA 2015-01-03 -->
+                          <tr>
                                 <td></td>
                                 <td></td>
                                 <td width="149">Address:</td>
