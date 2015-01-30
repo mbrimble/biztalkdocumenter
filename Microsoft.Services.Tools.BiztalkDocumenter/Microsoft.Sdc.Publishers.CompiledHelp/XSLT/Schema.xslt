@@ -78,7 +78,18 @@
                             <xsl:value-of select="BizTalkBaseObject/Envelope" />
                         </td>
                     </tr>
-                    <tr>
+                  <!-- Added by PCA 2015-01-03 -->
+                  <tr>
+                    <td width="10"></td>
+                    <td width="175" class="TableTitle">
+                      <nobr>Description:</nobr>
+                    </td>
+                    <td class="TableData">
+                      <xsl:value-of select="BizTalkBaseObject/CustomDescription" />
+                    </td>
+                  </tr>
+                  <!-- End Added by PCA 2015-01-03 -->
+                  <tr>
                         <td width="10"></td>
                         <td colspan="2">
 

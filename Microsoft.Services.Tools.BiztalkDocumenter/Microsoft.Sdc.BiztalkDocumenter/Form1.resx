@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="folderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="folderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>463, 17</value>
-  </data>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERET
@@ -285,15 +285,49 @@
         D0HzU4JMpUUUVgdi2P/Z
 </value>
   </data>
-  <data name="imageList1.TrayLocation" type="System.Drawing.Point, System.Drawing">
-    <value>641, 17</value>
+  <data name="label10.Text" xml:space="preserve">
+    <value>In addition, any web page files (*.htm, *.html, *.mht) and subdirectories with web page files contained within the Resource Folder will be compiled into the CHM so that you can enhance the documentation by providing any further information. Office documents containing images and saved as Single File Web Page (*.mht) can be added as well. </value>
   </data>
+  <data name="pictureBox5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        /9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERET
+        FhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4e
+        Hh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAnACcDASIAAhEBAxEB/8QA
+        HwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIh
+        MUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVW
+        V1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXG
+        x8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQF
+        BgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAV
+        YnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOE
+        hYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq
+        8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDha6/wN8PPEPixPtFnCtvZg4NxMcL+HrS/CTwsnivxbFa3AP2K
+        BfOuCO6jt+Jr6yMlloVrbwpZ4jEZKImAsYBUY+vIr5HLsuWJXPP4fzP1fiDiGWAkqFBXm/w/4J4HcfAy
+        SC23vrzs+MkpZNt/PNef+KfBeqaErTF4ru1XrLFxt+o6ivrO48babBkyRkY/2xXKeI5dI8ZIo06AwXz+
+        YIp1KlZGRdxRwOvBHPv+FenWyrDyj+70Z4GB4nx0al66vE+UaK2vF+miw1EtHF5SSlsp/ccH5l/r+NFf
+        MVIOnNwfQ/R6NWNaCnHqekfs03MNteatvIDO0Ckn+7ubP9a9x+IM7wmFo7gW58lzvLFeN8fcV8keCtcf
+        Q9W80sRDMvly47Dsfwr6a8Ma9pPjfT4I7u/uLXUrdCjfZ7oxNIpxkgqfmB2g+1fTZTXjKj7Pqj864qwN
+        SGL+spXizhfFesagdRnlg8QKkJlZlH2mQfLuyO3pV/4e6lLe+L7SR7/7Yj39+8T72OE8qPA+Ycdeldxc
+        +DNMkB3anrrD31OX/Gub8QW/hrwW39si6vZtQjjdIEuL55cbhg8MTXoOPI+aT0PHjWjiKapQjrt/Wh5F
+        8ajCPEN6kWNv2ssPy5orkPE2qSarqkty5zuYtn1JPNFfI4ysp1pSR+p5bh5UcNCEt7GZV/S9XvdOdWt5
+        SNpyOSCPoR0oormjUlTd4uzOupThUXLNXR1KfE7xMtv5IvrjbjvJn/69cxq+t6jqshe8nd8+pzmiit6m
+        LrTVpSOajl+Goy5oQSZnUUUVz2O1H//Z
+</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>This is for including specific files in a set format, typically when using this application to document a single BizTalk Application.  Only use this option if you know the required schema, any files processed here will show under each BizTalk Application in the documentation.</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>This section allows to filter those hosts, adapters, BRE policies and BRE Vocabularies to be included in the documentation. An empty textbox means no filter is to be applied. For each BizTalk object, multiple filters can be applied. Different filters are to be delimited with a pipe "|". Filters are applied with a "StartsWith" function, i.e. the filter "Common|ESB" applied to BRE Vocabularies will result in only those vocabularies starting with "Common" and "ESB" being added to the documentation. </value>
+  </data>
+  <metadata name="imageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>641, 17</value>
+  </metadata>
   <data name="imageList1.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADk
-        DwAAAk1TRnQBSQFMAgEBCgEAASwBAAEwAQABEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DwAAAk1TRnQBSQFMAgEBCgEAAZABAAGQAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAATADAAEBAQABCAYAAQwYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -360,15 +394,15 @@
         Av8B7AHtAQcB7AH3ARQBBwHtAewV/wEZCP8BBwLzAfEB9wHqAmwB/wEHBf8BGQG1Bf8B6wL/AQcB6gHs
         AeoBEgEUAewB6gEHCf8EtQS0Ac8CrgKLCP8BvAL0AfIB7wHsAfIBkgH/AQcMhgFDBf8B6gG8ARIM/wQJ
         AdwD1gXVCP8BvAH/AfQB8wEHAe0B7wGSAf8BBwyGAWYF/wEHAewBByH/AfAC/wH0AfABvAGSAe84/wEH
-        AfADvAIHEf8BQgFNAT4HAAE+AwABKAMAAUADAAEwAwABAQEAAQEFAAGAAQEWAAP//wCYAAs=
+        AfADvAIHEf8BQgFNAT4HAAE+AwABKAMAAUADAAEwAwABAQEAAQEFAAGAAQEWAAP//wCCAAs=
 </value>
   </data>
-  <data name="dlgConfigFrameworkOpenFile.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="dlgConfigFrameworkOpenFile.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
-  </data>
-  <data name="dlgConfigFrameworkSaveFile.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="dlgConfigFrameworkSaveFile.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>242, 17</value>
-  </data>
+  </metadata>
   <data name="linkLabel1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERET
@@ -491,18 +525,27 @@
         yWiirI55ynUk5zd2+p//2Q==
 </value>
   </data>
-  <data name="dlgResultFileSave.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="dlgResultFileSave.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>756, 17</value>
-  </data>
-  <data name="lineShape1.Bounds" type="System.Drawing.Rectangle, System.Drawing">
+  </metadata>
+  <metadata name="lineShape1.Bounds" type="System.Drawing.Rectangle, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>10, 455, 509, 1</value>
-  </data>
-  <data name="lineShape1.Location" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="lineShape1.Location" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>10, 455</value>
-  </data>
-  <data name="lineShape1.Size" type="System.Drawing.Size, System.Drawing">
+  </metadata>
+  <metadata name="lineShape1.Size" type="System.Drawing.Size, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>509, 1</value>
-  </data>
+  </metadata>
+  <metadata name="lineShape1.Bounds" type="System.Drawing.Rectangle, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>10, 455, 509, 1</value>
+  </metadata>
+  <metadata name="lineShape1.Location" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>10, 455</value>
+  </metadata>
+  <metadata name="lineShape1.Size" type="System.Drawing.Size, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>509, 1</value>
+  </metadata>
   <data name="linkLabel4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERET
@@ -523,7 +566,27 @@
         qycpxTv5I83+HngtPDsvkWGjpplq04nm/fvK8rgEDLNzgAniivSKKu8UlGKSS6I2pUY0o8sVZH//2Q==
 </value>
   </data>
-  <data name="label34.Text" xml:space="preserve">
-    <value>This is for including specific files in a set format, typically when using this application to document a single BizTalk Application.  Only use this option if you know the required schema, any files processed here will show under each BizTalk Application in the documentation.</value>
+  <data name="linkAdditionalFilters.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        /9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERET
+        FhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4e
+        Hh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAZABgDASIAAhEBAxEB/8QA
+        HwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIh
+        MUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVW
+        V1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXG
+        x8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQF
+        BgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAV
+        YnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOE
+        hYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq
+        8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6H+K3ii/0S/trWzvWtQ9uZcqqkk7sdx0rjofEXjjUPCl3rmk+
+        JTePaORcWcUMZmjQfx4xyO/0q78bdeTQfiJotw9naXv/ABLpB5FyuY2y+Mke1XPCHjXT7Dw9e+K9S0rQ
+        dNt+be3jsExcXDg52n0H/wCuvGq1U60lKdkvXTTc8CvWTrzjOo4peumm434E+N9c8QwamutXYvPKvIoo
+        JDGFYB0YkHGBwRRWH8B9RTVtZ8R6glrBaC41mCTyIRhI8xvwKK9DAS9phYTve99fmzuyus6uFjK9/P5n
+        e/FDwRp3iqa1urzRlv5rZSkbi5eFlU8kZXqM81xX/CpNKIwfCUmPT+1Z8fzr3Kiuh06Evjpxb80bVcDR
+        qycpxTv5I83+HngtPDsvkWGjpplq04nm/fvK8rgEDLNzgAniivSKKu8UlGKSS6I2pUY0o8sVZH//2Q==
+</value>
   </data>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>148</value>
+  </metadata>
 </root>

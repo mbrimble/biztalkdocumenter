@@ -77,6 +77,7 @@ namespace Microsoft.Services.Tools.BizTalkOM
             this.AssemblyName = pipeline.AssemblyQualifiedName;
             this.PipelineType = (PipelineType)Enum.Parse(typeof(PipelineType), ((int)pipeline.Type).ToString());
             this.ApplicationName = pipeline.Application.Name;
+            this.CustomDescription = pipeline.Description;  // PCA 2015-01-06
 
             this.PrepareViewData(pipeline.AssemblyQualifiedName);
 

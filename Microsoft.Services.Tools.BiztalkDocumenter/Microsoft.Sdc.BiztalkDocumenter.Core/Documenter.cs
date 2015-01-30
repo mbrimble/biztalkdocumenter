@@ -37,6 +37,10 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
         public PublishType PublishType;
         public IPublisher Publisher = null;
         public bool DocumentRules = false;
+        public string[] RulesPolicyFilters = new string[] { };         // PCA 2015-01-06
+        public string[] RulesVocabularyFilters = new string[] { };     // PCA 2015-01-06
+        public string[] HostFilters = new string[] { };                // PCA 2015-01-06
+        public string[] AdapterFilters = new string[] { };             // PCA 2015-01-06
 
         public event UpdatePercentageComplete PercentageDocumentationComplete;
 
@@ -135,7 +139,8 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
 
                 string[] ssoLocations = { SsoStage, SsoTest, SsoProd };
 
-               this.Publisher.Publish(bi, this.PublishType, this.ResourceFolder, this.OutputDir, this.ReportName, this.DocumentRules, ssoLocations, this.SsoApplications, this.BizTalkXmlConfig);
+               this.Publisher.Publish(bi, this.PublishType, this.ResourceFolder, this.OutputDir, this.ReportName, this.DocumentRules, ssoLocations, this.SsoApplications, this.BizTalkXmlConfig
+                   , RulesPolicyFilters, RulesVocabularyFilters, HostFilters, AdapterFilters); // PCA 2015-01-06
 
                 //this.Publisher.Publish(bi, this.PublishType, this.ResourceFolder, this.OutputDir, this.ReportName, this.DocumentRules); MTB 20130308
 
