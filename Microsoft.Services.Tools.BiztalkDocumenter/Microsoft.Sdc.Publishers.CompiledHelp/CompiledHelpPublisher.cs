@@ -87,7 +87,25 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers
 
         private void WriteTransformedXmlDataToStream(Stream s, string xmlData, XslCompiledTransform transform, XsltArgumentList args)
         {
-            XPathDocument data = new XPathDocument(new MemoryStream(Encoding.UTF8.GetBytes(xmlData)));
+            XPathDocument data;
+
+            try // PCA 2015-03-09 Added to suport btm files which are UTF16
+            {
+                data = new XPathDocument(new MemoryStream(Encoding.UTF8.GetBytes(xmlData)));
+            }
+            catch (Exception e)
+            {
+                data = new XPathDocument(new MemoryStream(Encoding.BigEndianUnicode.GetBytes(xmlData)));
+            }
+            transform.Transform(data, args, s);
+            s.Flush();
+            data = null;
+
+        }
+
+        private void WriteTransformedXmlDataToStreamUTF16(Stream s, string xmlData, XslCompiledTransform transform, XsltArgumentList args)
+        {
+            XPathDocument data = new XPathDocument(new MemoryStream(Encoding.BigEndianUnicode.GetBytes(xmlData)));
             transform.Transform(data, args, s);
             s.Flush();
             data = null;
@@ -987,19 +1005,33 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers
                             string map2HtmlFileName = Path.Combine(targetDir, "Map\\" + transform.Id + "_2.html");
 
                             HelpFileNode mapSourceNode = hfnMaps.CreateChild(transform.Name, mapHtmlFileName);
-                            mapSourceNode.CreateChild("Detail Formatted", map2HtmlFileName);
+
+                            if (!string.IsNullOrEmpty(this.resourceFolder))  // PCA 2015-03-09 Allow the use of BizTalk Map Documenter 
+                            {
+                                foreach (string directory in Directory.GetDirectories(this.resourceFolder, "BtmSourceFiles"))
+                                {
+                                    foreach (string btmFile in Directory.GetFiles(directory, transform.Name + ".btm"))
+                                    {
+                                        string btmSource = File.ReadAllText(btmFile);
+
+                                        mapSourceNode.CreateChild("Map Documentation", map2HtmlFileName);
+
+                                        WriteTransformedXmlDataToFile(
+                                            Path.Combine(targetDir, map2HtmlFileName),
+                                            btmSource,
+                                            map2Transform,
+                                            xsltArgs);
+
+                                    }
+                                }
+                            }
+
                             mapSourceNode.CreateChild("Source", mapXmlFileName);
 
                             WriteTransformedXmlDataToFile(
                                 Path.Combine(targetDir, mapHtmlFileName),
                                 transform.GetXml(),
                                 mapTransform,
-                                xsltArgs);
-
-                            WriteTransformedXmlDataToFile(
-                                Path.Combine(targetDir, map2HtmlFileName),
-                                transform.GetXml(),
-                                map2Transform,
                                 xsltArgs);
 
                             WriteDataToFile(mapXmlFileName, transform.XsltSource);
@@ -1187,7 +1219,7 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers
             HelpFileNode hfnDevNotes;
             HelpFileNode hfnDevNotesSub; // PCA 2015-01-03 - To allow subfolders 
 
-            if (!string.IsNullOrEmpty(this.resourceFolder) && Directory.GetFiles(this.resourceFolder, "*.*ht*").Length > 0)  // PCA 2015-01-03 - Changed "*.htm*"  for "*.*ht*" to allow files with .mht extensions (Single File Web Pages) 
+            if (!string.IsNullOrEmpty(this.resourceFolder) && (Directory.GetFiles(this.resourceFolder, "*.*ht*").Length > 0 || Directory.GetDirectories(this.resourceFolder).Length > 0 ))  // PCA 2015-01-03 - Changed "*.htm*"  for "*.*ht*" to allow files with .mht extensions (Single File Web Pages) -- PCA 2015-03-09 Allowing subfolders even with no files in the root folder. 
             {
                 hfnDevNotes = this.hfw.RootNode.CreateChild("Additional Notes");
 
@@ -1307,7 +1339,8 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter.Publishers
             xr.Close();
 
             xr = new XmlTextReader(a.GetManifestResourceStream(resourcePrefix + ".XSLT.Map2.xslt"));
-            map2Transform.Load(xr);
+            // mapTransform.Load(xr); // PCA 2015-03-09 changed to support scripts 
+            map2Transform.Load(xr, new XsltSettings(false, true), new XmlUrlResolver()); // PCA 2015-03-09 changed to support scripts 
             xr.Close();
 
             xr = new XmlTextReader(a.GetManifestResourceStream(resourcePrefix + ".XSLT.OrchestrationCorrelationTypes.xslt"));

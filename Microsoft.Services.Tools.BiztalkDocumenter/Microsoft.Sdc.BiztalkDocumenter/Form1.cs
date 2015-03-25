@@ -268,15 +268,15 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             this.label11 = new System.Windows.Forms.Label();
             this.tvOrchs = new System.Windows.Forms.TreeView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label30 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtResourceFolder = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtResourceFolder = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.cbShowOutput = new System.Windows.Forms.CheckBox();
             this.txtReportTitle = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -285,11 +285,9 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             this.txtOutputDir = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBrowse = new System.Windows.Forms.Button();
-            //Added for SSO Config Documenter
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            //Added for SSO Config Documenter end
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
@@ -297,7 +295,6 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             this.textBoxSsoProd = new System.Windows.Forms.TextBox();
             this.textBoxSsoTest = new System.Windows.Forms.TextBox();
             this.textBoxSsoStage = new System.Windows.Forms.TextBox();
-            //this.textBoxSsoBuild = new System.Windows.Forms.TextBox();
             this.buttonSsoProd = new System.Windows.Forms.Button();
             this.buttonSsoTest = new System.Windows.Forms.Button();
             this.buttonSsoStage = new System.Windows.Forms.Button();
@@ -580,243 +577,6 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             this.label2.TabIndex = 38;
             this.label2.Text = "Management Server Name";
             // 
-            // tabPage5
-            // 
-            this.tabPage5.BackColor = System.Drawing.Color.White;
-            this.tabPage5.Controls.Add(this.panel7);
-            this.tabPage5.Controls.Add(this.label33);
-            this.tabPage5.Controls.Add(this.grpBoxSSO);
-            this.tabPage5.Controls.Add(this.listBoxSsoApplications);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPageSsoConfig";
-            this.tabPage5.Size = new System.Drawing.Size(560, 452);
-            this.tabPage5.TabIndex = 4; // not sure if this correct
-            this.tabPage5.Text = "SSO Config";
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(48)))), ((int)(((byte)(21)))));
-            this.panel7.Controls.Add(this.pictureBox5);
-            this.panel7.Controls.Add(this.label31);
-            this.panel7.Controls.Add(this.label32);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(560, 40);
-            this.panel7.TabIndex = 55;
-            //// 
-            //// pictureBox5
-            //// 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(8, 1);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(40, 38);
-            this.pictureBox5.TabIndex = 4;
-            this.pictureBox5.TabStop = false;
-            //// 
-            //// label31
-            //// 
-            this.label31.ForeColor = System.Drawing.Color.White;
-            this.label31.Location = new System.Drawing.Point(48, 24);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(152, 23);
-            this.label31.TabIndex = 3;
-            this.label31.Text = "Select SSO Configuration";
-            //// 
-            //// label32
-            //// 
-            this.label32.BackColor = System.Drawing.Color.Transparent;
-            this.label32.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.ForeColor = System.Drawing.Color.White;
-            this.label32.Location = new System.Drawing.Point(48, 6);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(392, 23);
-            this.label32.TabIndex = 1;
-            this.label32.Text = "Microsoft Services BizTalk Documenter";
-            //// 
-            // tabPageSsoConfig
-            // 
-
-            //this.tabPageSsoConfig.Controls.Add(this.label20);
-            //this.tabPageSsoConfig.Controls.Add(this.groupBox1);
-            //this.tabPageSsoConfig.Controls.Add(this.panel1);
-
-
-            // 
-            // listBoxSsoApplications
-            // 
-            this.listBoxSsoApplications.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBoxSsoApplications.CheckOnClick = true;
-            this.listBoxSsoApplications.FormattingEnabled = true;
-            this.listBoxSsoApplications.Location = new System.Drawing.Point(31, 80);
-            this.listBoxSsoApplications.Name = "listBoxSsoApplications";
-            this.listBoxSsoApplications.Size = new System.Drawing.Size(487, 175);
-            this.listBoxSsoApplications.TabIndex = 92;
-            // 
-            // label33
-            // 
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
-            this.label33.Location = new System.Drawing.Point(25, 47);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(493, 33);
-            this.label33.TabIndex = 91;
-            this.label33.Text = "Select the SSO Applications whose key/value pairs you would like included in the " +
-                "documentation (Included under separate heading)";
-            // 
-            // grpBoxSSO
-            // 
-            this.grpBoxSSO.Controls.Add(this.textBoxSsoProd);
-            this.grpBoxSSO.Controls.Add(this.textBoxSsoTest);
-            this.grpBoxSSO.Controls.Add(this.textBoxSsoStage);
-            //this.grpBoxSSO.Controls.Add(this.textBoxSsoBuild);
-            this.grpBoxSSO.Controls.Add(this.buttonSsoProd);
-            this.grpBoxSSO.Controls.Add(this.buttonSsoTest);
-            this.grpBoxSSO.Controls.Add(this.buttonSsoStage);
-            //this.grpBoxSSO.Controls.Add(this.buttonSsoBuild);
-            this.grpBoxSSO.Controls.Add(this.label34);
-            this.grpBoxSSO.Controls.Add(this.label35);
-            this.grpBoxSSO.Controls.Add(this.label36);
-            this.grpBoxSSO.Controls.Add(this.label37);
-            this.grpBoxSSO.Controls.Add(this.label38);
-            this.grpBoxSSO.Location = new System.Drawing.Point(16, 260);
-            this.grpBoxSSO.Name = "grpBoxSSO";
-            this.grpBoxSSO.Size = new System.Drawing.Size(519, 175);
-            this.grpBoxSSO.TabIndex = 78;
-            this.grpBoxSSO.TabStop = false;
-            this.grpBoxSSO.Text = "Include exported SSO application configurations";
-            // 
-            // textBoxSsoProd
-            // 
-            this.textBoxSsoProd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxSsoProd.Location = new System.Drawing.Point(161, 147);
-            this.textBoxSsoProd.Name = "textBoxSsoProd";
-            this.textBoxSsoProd.Size = new System.Drawing.Size(310, 20);
-            this.textBoxSsoProd.TabIndex = 99;
-            // 
-            // textBoxSsoTest
-            // 
-            this.textBoxSsoTest.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxSsoTest.Location = new System.Drawing.Point(161, 121);
-            this.textBoxSsoTest.Name = "textBoxSsoTest";
-            this.textBoxSsoTest.Size = new System.Drawing.Size(310, 20);
-            this.textBoxSsoTest.TabIndex = 98;
-            // 
-            // textBoxSsoStage
-            // 
-            this.textBoxSsoStage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxSsoStage.Location = new System.Drawing.Point(162, 95);
-            this.textBoxSsoStage.Name = "textBoxSsoStage";
-            this.textBoxSsoStage.Size = new System.Drawing.Size(310, 20);
-            this.textBoxSsoStage.TabIndex = 97;
-            //// 
-            //// textBoxSsoBuild
-            //// 
-            //this.textBoxSsoBuild.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            //this.textBoxSsoBuild.Location = new System.Drawing.Point(162, 69);
-            //this.textBoxSsoBuild.Name = "textBoxSsoBuild";
-            //this.textBoxSsoBuild.Size = new System.Drawing.Size(310, 20);
-            //this.textBoxSsoBuild.TabIndex = 96;
-            // 
-            // buttonSsoProd
-            // 
-            this.buttonSsoProd.BackColor = System.Drawing.Color.Silver;
-            this.buttonSsoProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSsoProd.Location = new System.Drawing.Point(478, 146);
-            this.buttonSsoProd.Name = "buttonSsoProd";
-            this.buttonSsoProd.Size = new System.Drawing.Size(35, 22);
-            this.buttonSsoProd.TabIndex = 95;
-            this.buttonSsoProd.Text = "...";
-            this.buttonSsoProd.UseVisualStyleBackColor = false;
-            this.buttonSsoProd.Click += new System.EventHandler(this.ButtonSsoClick);
-            // 
-            // buttonSsoTest
-            // 
-            this.buttonSsoTest.BackColor = System.Drawing.Color.Silver;
-            this.buttonSsoTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSsoTest.Location = new System.Drawing.Point(478, 120);
-            this.buttonSsoTest.Name = "buttonSsoTest";
-            this.buttonSsoTest.Size = new System.Drawing.Size(35, 22);
-            this.buttonSsoTest.TabIndex = 94;
-            this.buttonSsoTest.Text = "...";
-            this.buttonSsoTest.UseVisualStyleBackColor = false;
-            this.buttonSsoTest.Click += new System.EventHandler(this.ButtonSsoClick);
-            // 
-            // buttonSsoStage
-            // 
-            this.buttonSsoStage.BackColor = System.Drawing.Color.Silver;
-            this.buttonSsoStage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSsoStage.Location = new System.Drawing.Point(478, 94);
-            this.buttonSsoStage.Name = "buttonSsoStage";
-            this.buttonSsoStage.Size = new System.Drawing.Size(35, 22);
-            this.buttonSsoStage.TabIndex = 93;
-            this.buttonSsoStage.Text = "...";
-            this.buttonSsoStage.UseVisualStyleBackColor = false;
-            this.buttonSsoStage.Click += new System.EventHandler(this.ButtonSsoClick);
-            // 
-            // buttonSsoBuild
-            // 
-            this.buttonSsoBuild.BackColor = System.Drawing.Color.Silver;
-            this.buttonSsoBuild.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSsoBuild.Location = new System.Drawing.Point(478, 68);
-            this.buttonSsoBuild.Name = "buttonSsoBuild";
-            this.buttonSsoBuild.Size = new System.Drawing.Size(35, 22);
-            this.buttonSsoBuild.TabIndex = 92;
-            this.buttonSsoBuild.Text = "...";
-            this.buttonSsoBuild.UseVisualStyleBackColor = false;
-            this.buttonSsoBuild.Click += new System.EventHandler(this.ButtonSsoClick);
-            // 
-            // label34
-            // 
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
-            this.label34.Location = new System.Drawing.Point(12, 22);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(493, 42);
-            this.label34.TabIndex = 90;
-            this.label34.Text = resources.GetString("label34.Text");
-            // 
-            // label35
-            // 
-            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
-            this.label35.Location = new System.Drawing.Point(12, 148);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(143, 18);
-            this.label35.TabIndex = 84;
-            this.label35.Text = "SSO Configuration PROD:";
-            // 
-            // label36
-            // 
-            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
-            this.label36.Location = new System.Drawing.Point(12, 122);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(143, 18);
-            this.label36.TabIndex = 82;
-            this.label36.Text = "SSO Configuration TEST:";
-            // 
-            // label37
-            // 
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
-            this.label37.Location = new System.Drawing.Point(12, 96);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(143, 18);
-            this.label37.TabIndex = 80;
-            this.label37.Text = "SSO Configuration STAGE:";
-            // 
-            // label38
-            // 
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
-            this.label38.Location = new System.Drawing.Point(12, 70);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(143, 18);
-            this.label38.TabIndex = 78;
-            this.label38.Text = "SSO Configuration BUILD:";
-
-            // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.White;
@@ -1095,6 +855,18 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Output";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Silver;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(389, 366);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(24, 19);
+            this.button1.TabIndex = 57;
+            this.button1.Text = "...";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.btnBrowse2_Click);
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(48)))), ((int)(((byte)(21)))));
@@ -1137,38 +909,6 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             this.label18.Text = "Microsoft Services BizTalk Documenter";
             this.label18.Click += new System.EventHandler(this.label18_Click);
             // 
-            // label10
-            // 
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
-            this.label10.Location = new System.Drawing.Point(23, 249);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(480, 61);
-            this.label10.TabIndex = 60;
-            this.label10.Text = resources.GetString("label10.Text");
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label9
-            // 
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
-            this.label9.Location = new System.Drawing.Point(26, 192);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(440, 48);
-            this.label9.TabIndex = 59;
-            this.label9.Text = "If you are using the CHM output provider you may specify a resource folder contai" +
-    "ning a \'titlePage.htm\' and any associated images to produce a custom look and fe" +
-    "el to your CHM title page.";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtResourceFolder
-            // 
-            this.txtResourceFolder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtResourceFolder.Location = new System.Drawing.Point(176, 366);
-            this.txtResourceFolder.Name = "txtResourceFolder";
-            this.txtResourceFolder.Size = new System.Drawing.Size(208, 20);
-            this.txtResourceFolder.TabIndex = 56;
-            // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1180,17 +920,37 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             this.label5.TabIndex = 58;
             this.label5.Text = "Resource Folder";
             // 
-            // button1
+            // label10
             // 
-            this.button1.BackColor = System.Drawing.Color.Silver;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(389, 366);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 19);
-            this.button1.TabIndex = 57;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.btnBrowse2_Click);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
+            this.label10.Location = new System.Drawing.Point(8, 217);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(545, 111);
+            this.label10.TabIndex = 60;
+            this.label10.Text = resources.GetString("label10.Text");
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtResourceFolder
+            // 
+            this.txtResourceFolder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtResourceFolder.Location = new System.Drawing.Point(176, 366);
+            this.txtResourceFolder.Name = "txtResourceFolder";
+            this.txtResourceFolder.Size = new System.Drawing.Size(208, 20);
+            this.txtResourceFolder.TabIndex = 56;
+            // 
+            // label9
+            // 
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
+            this.label9.Location = new System.Drawing.Point(22, 190);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(515, 27);
+            this.label9.TabIndex = 59;
+            this.label9.Text = "If you are using the CHM output provider you may specify a resource folder contai" +
+    "ning a \'titlePage.htm\' and any associated images to produce a custom look and fe" +
+    "el to your CHM title page.";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cbShowOutput
             // 
@@ -1274,6 +1034,201 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             this.btnBrowse.Text = "...";
             this.btnBrowse.UseVisualStyleBackColor = false;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.BackColor = System.Drawing.Color.White;
+            this.tabPage5.Controls.Add(this.panel7);
+            this.tabPage5.Controls.Add(this.label33);
+            this.tabPage5.Controls.Add(this.grpBoxSSO);
+            this.tabPage5.Controls.Add(this.listBoxSsoApplications);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(560, 438);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "SSO Config";
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(48)))), ((int)(((byte)(21)))));
+            this.panel7.Controls.Add(this.pictureBox5);
+            this.panel7.Controls.Add(this.label31);
+            this.panel7.Controls.Add(this.label32);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(560, 40);
+            this.panel7.TabIndex = 55;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(8, 1);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(40, 38);
+            this.pictureBox5.TabIndex = 4;
+            this.pictureBox5.TabStop = false;
+            // 
+            // label31
+            // 
+            this.label31.ForeColor = System.Drawing.Color.White;
+            this.label31.Location = new System.Drawing.Point(48, 24);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(152, 23);
+            this.label31.TabIndex = 3;
+            this.label31.Text = "Select SSO Configuration";
+            // 
+            // label32
+            // 
+            this.label32.BackColor = System.Drawing.Color.Transparent;
+            this.label32.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.Color.White;
+            this.label32.Location = new System.Drawing.Point(48, 6);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(392, 23);
+            this.label32.TabIndex = 1;
+            this.label32.Text = "Microsoft Services BizTalk Documenter";
+            // 
+            // label33
+            // 
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
+            this.label33.Location = new System.Drawing.Point(25, 47);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(493, 33);
+            this.label33.TabIndex = 91;
+            this.label33.Text = "Select the SSO Applications whose key/value pairs you would like included in the " +
+    "documentation (Included under separate heading)";
+            // 
+            // grpBoxSSO
+            // 
+            this.grpBoxSSO.Controls.Add(this.textBoxSsoProd);
+            this.grpBoxSSO.Controls.Add(this.textBoxSsoTest);
+            this.grpBoxSSO.Controls.Add(this.textBoxSsoStage);
+            this.grpBoxSSO.Controls.Add(this.buttonSsoProd);
+            this.grpBoxSSO.Controls.Add(this.buttonSsoTest);
+            this.grpBoxSSO.Controls.Add(this.buttonSsoStage);
+            this.grpBoxSSO.Controls.Add(this.label34);
+            this.grpBoxSSO.Controls.Add(this.label35);
+            this.grpBoxSSO.Controls.Add(this.label36);
+            this.grpBoxSSO.Controls.Add(this.label37);
+            this.grpBoxSSO.Controls.Add(this.label38);
+            this.grpBoxSSO.Location = new System.Drawing.Point(16, 260);
+            this.grpBoxSSO.Name = "grpBoxSSO";
+            this.grpBoxSSO.Size = new System.Drawing.Size(519, 175);
+            this.grpBoxSSO.TabIndex = 78;
+            this.grpBoxSSO.TabStop = false;
+            this.grpBoxSSO.Text = "Include exported SSO application configurations";
+            // 
+            // textBoxSsoProd
+            // 
+            this.textBoxSsoProd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxSsoProd.Location = new System.Drawing.Point(161, 147);
+            this.textBoxSsoProd.Name = "textBoxSsoProd";
+            this.textBoxSsoProd.Size = new System.Drawing.Size(310, 20);
+            this.textBoxSsoProd.TabIndex = 99;
+            // 
+            // textBoxSsoTest
+            // 
+            this.textBoxSsoTest.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxSsoTest.Location = new System.Drawing.Point(161, 121);
+            this.textBoxSsoTest.Name = "textBoxSsoTest";
+            this.textBoxSsoTest.Size = new System.Drawing.Size(310, 20);
+            this.textBoxSsoTest.TabIndex = 98;
+            // 
+            // textBoxSsoStage
+            // 
+            this.textBoxSsoStage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxSsoStage.Location = new System.Drawing.Point(162, 95);
+            this.textBoxSsoStage.Name = "textBoxSsoStage";
+            this.textBoxSsoStage.Size = new System.Drawing.Size(310, 20);
+            this.textBoxSsoStage.TabIndex = 97;
+            // 
+            // buttonSsoProd
+            // 
+            this.buttonSsoProd.BackColor = System.Drawing.Color.Silver;
+            this.buttonSsoProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSsoProd.Location = new System.Drawing.Point(478, 146);
+            this.buttonSsoProd.Name = "buttonSsoProd";
+            this.buttonSsoProd.Size = new System.Drawing.Size(35, 22);
+            this.buttonSsoProd.TabIndex = 95;
+            this.buttonSsoProd.Text = "...";
+            this.buttonSsoProd.UseVisualStyleBackColor = false;
+            this.buttonSsoProd.Click += new System.EventHandler(this.ButtonSsoClick);
+            // 
+            // buttonSsoTest
+            // 
+            this.buttonSsoTest.BackColor = System.Drawing.Color.Silver;
+            this.buttonSsoTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSsoTest.Location = new System.Drawing.Point(478, 120);
+            this.buttonSsoTest.Name = "buttonSsoTest";
+            this.buttonSsoTest.Size = new System.Drawing.Size(35, 22);
+            this.buttonSsoTest.TabIndex = 94;
+            this.buttonSsoTest.Text = "...";
+            this.buttonSsoTest.UseVisualStyleBackColor = false;
+            this.buttonSsoTest.Click += new System.EventHandler(this.ButtonSsoClick);
+            // 
+            // buttonSsoStage
+            // 
+            this.buttonSsoStage.BackColor = System.Drawing.Color.Silver;
+            this.buttonSsoStage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSsoStage.Location = new System.Drawing.Point(478, 94);
+            this.buttonSsoStage.Name = "buttonSsoStage";
+            this.buttonSsoStage.Size = new System.Drawing.Size(35, 22);
+            this.buttonSsoStage.TabIndex = 93;
+            this.buttonSsoStage.Text = "...";
+            this.buttonSsoStage.UseVisualStyleBackColor = false;
+            this.buttonSsoStage.Click += new System.EventHandler(this.ButtonSsoClick);
+            // 
+            // label34
+            // 
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
+            this.label34.Location = new System.Drawing.Point(12, 22);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(493, 42);
+            this.label34.TabIndex = 90;
+            this.label34.Text = resources.GetString("label34.Text");
+            // 
+            // label35
+            // 
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
+            this.label35.Location = new System.Drawing.Point(12, 148);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(143, 18);
+            this.label35.TabIndex = 84;
+            this.label35.Text = "SSO Configuration PROD:";
+            // 
+            // label36
+            // 
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
+            this.label36.Location = new System.Drawing.Point(12, 122);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(143, 18);
+            this.label36.TabIndex = 82;
+            this.label36.Text = "SSO Configuration TEST:";
+            // 
+            // label37
+            // 
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
+            this.label37.Location = new System.Drawing.Point(12, 96);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(143, 18);
+            this.label37.TabIndex = 80;
+            this.label37.Text = "SSO Configuration STAGE:";
+            // 
+            // label38
+            // 
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(153)))));
+            this.label38.Location = new System.Drawing.Point(12, 70);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(143, 18);
+            this.label38.TabIndex = 78;
+            this.label38.Text = "SSO Configuration BUILD:";
             // 
             // listBoxSsoApplications
             // 
@@ -1623,6 +1578,18 @@ namespace Microsoft.Services.Tools.BiztalkDocumenter
             this.linkLabel4.UseCompatibleTextRendering = true;
             this.linkLabel4.VisitedLinkColor = System.Drawing.Color.RoyalBlue;
             this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
+            // 
+            // buttonSsoBuild
+            // 
+            this.buttonSsoBuild.BackColor = System.Drawing.Color.Silver;
+            this.buttonSsoBuild.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSsoBuild.Location = new System.Drawing.Point(478, 68);
+            this.buttonSsoBuild.Name = "buttonSsoBuild";
+            this.buttonSsoBuild.Size = new System.Drawing.Size(35, 22);
+            this.buttonSsoBuild.TabIndex = 92;
+            this.buttonSsoBuild.Text = "...";
+            this.buttonSsoBuild.UseVisualStyleBackColor = false;
+            this.buttonSsoBuild.Click += new System.EventHandler(this.ButtonSsoClick);
             // 
             // linkAdditionalFilters
             // 
