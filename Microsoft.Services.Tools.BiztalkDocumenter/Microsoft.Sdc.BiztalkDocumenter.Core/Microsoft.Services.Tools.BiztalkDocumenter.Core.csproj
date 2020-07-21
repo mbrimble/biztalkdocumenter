@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <ProductVersion>9.0.30729</ProductVersion>
@@ -33,7 +33,7 @@
     </UpgradeBackupLocation>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <SignAssembly>true</SignAssembly>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <PublishUrl>http://localhost/Microsoft.Sdc.BiztalkDocumenter.Core/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
@@ -181,7 +181,7 @@
     <None Include="BizTalkTools.snk" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\BizTalkOM-BTS2013\BizTalkOM Shared Library\Microsoft.Services.Tools.BizTalkOM\Microsoft.Services.Tools.BizTalkOM.csproj">
+    <ProjectReference Include="..\Microsoft.Services.Tools.BizTalkOM\Microsoft.Services.Tools.BizTalkOM.csproj">
       <Project>{88c5f0a8-851c-4f10-8ab6-67b6b723b837}</Project>
       <Name>Microsoft.Services.Tools.BizTalkOM</Name>
     </ProjectReference>

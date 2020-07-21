@@ -1,0 +1,5 @@
+E:\Github\biztalkdocumenter\Microsoft.Services.Tools.BiztalkDocumenter\BizTalk.Utilities.SSO.Core\bin\Debug\BizTalk.Utilities.SSO.Core.dll
+E:\Github\biztalkdocumenter\Microsoft.Services.Tools.BiztalkDocumenter\BizTalk.Utilities.SSO.Core\bin\Debug\BizTalk.Utilities.SSO.Core.pdb
+E:\Github\biztalkdocumenter\Microsoft.Services.Tools.BiztalkDocumenter\BizTalk.Utilities.SSO.Core\bin\Debug\Microsoft.XLANGs.BaseTypes.dll
+E:\Github\biztalkdocumenter\Microsoft.Services.Tools.BiztalkDocumenter\BizTalk.Utilities.SSO.Core\obj\Debug\BizTalk.Utilities.SSO.Core.dll
+E:\Github\biztalkdocumenter\Microsoft.Services.Tools.BiztalkDocumenter\BizTalk.Utilities.SSO.Core\obj\Debug\BizTalk.Utilities.SSO.Core.pdb

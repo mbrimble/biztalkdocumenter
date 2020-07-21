@@ -1,0 +1,16 @@
+E:\Github\biztalkdocumenter\Microsoft.Services.Tools.BiztalkDocumenter\Microsoft.Services.Tools.BizTalkOM\bin\Debug\Microsoft.Services.Tools.BizTalkOM.dll
+E:\Github\biztalkdocumenter\Microsoft.Services.Tools.BiztalkDocumenter\Microsoft.Services.Tools.BizTalkOM\bin\Debug\Microsoft.Services.Tools.BizTalkOM.pdb
+E:\Github\biztalkdocumenter\Microsoft.Services.Tools.BiztalkDocumenter\Microsoft.Services.Tools.BizTalkOM\bin\Debug\Microsoft.XLANGs.BaseTypes.dll
+E:\Github\biztalkdocumenter\Microsoft.Services.Tools.BiztalkDocumenter\Microsoft.Services.Tools.BizTalkOM\bin\Debug\Microsoft.XLANGs.BizTalk.Engine.dll
+E:\Github\biztalkdocumenter\Microsoft.Services.Tools.BiztalkDocumenter\Microsoft.Services.Tools.BizTalkOM\bin\Debug\Microsoft.BizTalk.Pipeline.dll
+E:\Github\biztalkdocumenter\Microsoft.Services.Tools.BiztalkDocumenter\Microsoft.Services.Tools.BizTalkOM\bin\Debug\Microsoft.XLANGs.Engine.dll
+E:\Github\biztalkdocumenter\Microsoft.Services.Tools.BiztalkDocumenter\Microsoft.Services.Tools.BizTalkOM\obj\Debug\Microsoft.Services.Tools.BizTalkOM.dll
+E:\Github\biztalkdocumenter\Microsoft.Services.Tools.BiztalkDocumenter\Microsoft.Services.Tools.BizTalkOM\obj\Debug\Microsoft.Services.Tools.BizTalkOM.pdb
+E:\Github\RobBowman\biztalkdocumenter\Microsoft.Services.Tools.BiztalkDocumenter\Microsoft.Services.Tools.BizTalkOM\bin\Debug\Microsoft.Services.Tools.BizTalkOM.dll
+E:\Github\RobBowman\biztalkdocumenter\Microsoft.Services.Tools.BiztalkDocumenter\Microsoft.Services.Tools.BizTalkOM\bin\Debug\Microsoft.Services.Tools.BizTalkOM.pdb
+E:\Github\RobBowman\biztalkdocumenter\Microsoft.Services.Tools.BiztalkDocumenter\Microsoft.Services.Tools.BizTalkOM\bin\Debug\Microsoft.XLANGs.BaseTypes.dll
+E:\Github\RobBowman\biztalkdocumenter\Microsoft.Services.Tools.BiztalkDocumenter\Microsoft.Services.Tools.BizTalkOM\bin\Debug\Microsoft.XLANGs.BizTalk.Engine.dll
+E:\Github\RobBowman\biztalkdocumenter\Microsoft.Services.Tools.BiztalkDocumenter\Microsoft.Services.Tools.BizTalkOM\bin\Debug\Microsoft.BizTalk.Pipeline.dll
+E:\Github\RobBowman\biztalkdocumenter\Microsoft.Services.Tools.BiztalkDocumenter\Microsoft.Services.Tools.BizTalkOM\bin\Debug\Microsoft.XLANGs.Engine.dll
+E:\Github\RobBowman\biztalkdocumenter\Microsoft.Services.Tools.BiztalkDocumenter\Microsoft.Services.Tools.BizTalkOM\obj\Debug\Microsoft.Services.Tools.BizTalkOM.dll
+E:\Github\RobBowman\biztalkdocumenter\Microsoft.Services.Tools.BiztalkDocumenter\Microsoft.Services.Tools.BizTalkOM\obj\Debug\Microsoft.Services.Tools.BizTalkOM.pdb

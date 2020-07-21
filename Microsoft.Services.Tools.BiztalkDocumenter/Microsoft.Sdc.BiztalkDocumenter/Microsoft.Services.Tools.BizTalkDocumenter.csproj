@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <ProductVersion>9.0.30729</ProductVersion>
@@ -32,7 +32,7 @@
     </UpgradeBackupLocation>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <SignAssembly>true</SignAssembly>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <PublishUrl>http://localhost/Microsoft.Sdc.BiztalkDocumenter/</PublishUrl>
@@ -121,8 +121,26 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0" />
+    <ProjectReference Include="..\BizTalk.Utilities.SSO.Core\BizTalk.Utilities.SSO.Core.csproj">
+      <Project>{efde47e2-ae71-4324-8bc8-77302b62d07d}</Project>
+      <Name>BizTalk.Utilities.SSO.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.Sdc.Publishers.Word\Microsoft.Services.Tools.Publishers.Word.csproj">
+      <Project>{dd92b97b-2fc7-4ae0-bd95-db0bffb1cd8d}</Project>
+      <Name>Microsoft.Services.Tools.Publishers.Word</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.Services.Tools.BizTalkOM\Microsoft.Services.Tools.BizTalkOM.csproj">
+      <Project>{88c5f0a8-851c-4f10-8ab6-67b6b723b837}</Project>
+      <Name>Microsoft.Services.Tools.BizTalkOM</Name>
+    </ProjectReference>
+    <Reference Include="Microsoft.VisualBasic">
+      <HintPath>..\packages\VisualBasic.PowerPacks.Vs.1.0.0\lib\Microsoft.VisualBasic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\VisualBasic.PowerPacks.Vs.1.0.0\lib\Microsoft.VisualBasic.PowerPacks.Vs.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
@@ -146,15 +164,6 @@
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
-    <ProjectReference Include="..\..\..\BizTalk.Utilities.SSO.Core\BizTalk.Utilities.SSO.Core.csproj">
-      <Project>{efde47e2-ae71-4324-8bc8-77302b62d07d}</Project>
-      <Name>BizTalk.Utilities.SSO.Core</Name>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\BizTalkOM-BTS2013\BizTalkOM Shared Library\Microsoft.Services.Tools.BizTalkOM\Microsoft.Services.Tools.BizTalkOM.csproj">
-      <Project>{88c5f0a8-851c-4f10-8ab6-67b6b723b837}</Project>
-      <Name>Microsoft.Services.Tools.BizTalkOM</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Microsoft.Sdc.BiztalkDocumenter.Core\Microsoft.Services.Tools.BiztalkDocumenter.Core.csproj">
       <Name>Microsoft.Services.Tools.BiztalkDocumenter.Core</Name>
       <Project>{99AA0746-C289-474D-B434-857788ECF6F8}</Project>
@@ -164,10 +173,6 @@
       <Name>Microsoft.Services.Tools.Publishers.CompiledHelp</Name>
       <Project>{1B2161A1-6AD0-4A77-81ED-1BA8D4ABC921}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
-    <ProjectReference Include="..\Microsoft.Sdc.Publishers.Word\Microsoft.Services.Tools.Publishers.Word.csproj">
-      <Project>{DD92B97B-2FC7-4AE0-BD95-DB0BFFB1CD8D}</Project>
-      <Name>Microsoft.Services.Tools.Publishers.Word</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +216,7 @@
     <EmbeddedResource Include="Res\nextButton.jpg" />
     <EmbeddedResource Include="Res\usage.txt" />
     <AppDesigner Include="Properties\" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
